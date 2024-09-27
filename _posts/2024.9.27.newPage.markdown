@@ -1,0 +1,16 @@
+---
+layout:       post
+title:        "《JavaScript 二十年》推荐语"
+author:       "Deven"
+header-style: text
+catalog:      true
+tags:
+    - Web
+    - JavaScript
+---
+
+> 参考Huxpro。
+
+这是我尝试许多次以后发现的一个错的网站部署方式。免费的，而且方便编辑。
+
+— deven，追求幸福的男生
