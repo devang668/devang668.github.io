@@ -71,6 +71,190 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-code-of-hexo-helpper" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/12/code-of-hexo-helpper/" class="article-date">
+  <time class="dt-published" datetime="2025-09-12T11:28:09.000Z" itemprop="datePublished">2025-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/12/code-of-hexo-helpper/">code of hexo_helpper</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>npp：自己的记事本的位置-绝对位置；<br>targetDir：自己的hexo md文件的位置。</p>
+<p>其他，就是要满足已经可以正常hexo d推送成功过一次。<br>具备nodejs 具备hexo。</p>
+<pre><code class="cpp">
+#include &lt;windows.h&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;cctype&gt;
+
+#ifdef _MSC_VER
+#pragma comment(lib, &quot;shell32.lib&quot;)
+#endif
+
+bool runCmd(const std::string&amp; cmd)
+&#123;
+    STARTUPINFOA si;
+    PROCESS_INFORMATION pi;
+    ZeroMemory(&amp;si, sizeof(si));
+    si.cb = sizeof(si);
+    si.dwFlags     = STARTF_USESHOWWINDOW;
+    si.wShowWindow = SW_HIDE;
+
+    std::string full = &quot;cmd /c &quot; + cmd;
+    if (!CreateProcessA(NULL, const_cast&lt;char*&gt;(full.c_str()),
+                        NULL, NULL, FALSE, 0,
+                        NULL, NULL, &amp;si, &amp;pi))
+    &#123;
+        std::cerr &lt;&lt; &quot;CreateProcess failed: &quot; &lt;&lt; GetLastError() &lt;&lt; &quot;\n&quot;;
+        return false;
+    &#125;
+    WaitForSingleObject(pi.hProcess, INFINITE);
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
+    return true;
+&#125;
+
+void waitEnter()
+&#123;
+    std::cin.sync();
+    std::cin.clear();
+    std::cout &lt;&lt; &quot;Press ENTER to continue...&quot;;
+    std::cin.get();
+&#125;
+
+int main()
+&#123;
+    const char* targetDir = &quot;D:\\ProgramData\\git\\blogs\\source\\_posts&quot;;
+    if (!SetCurrentDirectoryA(targetDir))
+    &#123;
+        std::cerr &lt;&lt; &quot;ERROR: Cannot switch to &quot; &lt;&lt; targetDir &lt;&lt; &quot;\n&quot;;
+        return 1;
+    &#125;
+
+    while (true)
+    &#123;
+        std::cout &lt;&lt; &quot;\n=== Hexo Helper ===\n&quot;
+                     &quot;1  -&gt;  hexo g\n&quot;
+                     &quot;2  -&gt;  hexo d\n&quot;
+                     &quot;3  -&gt;  hexo g, wait 6s, hexo d\n&quot;
+                     &quot;5  -&gt;  open _posts folder\n&quot;
+                     &quot;6  -&gt;  hexo new \&quot;title\&quot; and open with Notepad++\n&quot;
+                     &quot;0  -&gt;  exit\n&quot;
+                     &quot;Choice: &quot;;
+        int choice;
+        if (!(std::cin &gt;&gt; choice)) break;
+        std::cin.sync();
+
+        switch (choice)
+        &#123;
+        case 1:
+            std::cout &lt;&lt; &quot;Running hexo g ...\n&quot;;
+            runCmd(&quot;hexo g&quot;);
+            waitEnter();
+            break;
+
+        case 2:
+            std::cout &lt;&lt; &quot;Running hexo d ...\n&quot;;
+            runCmd(&quot;hexo d&quot;);
+            waitEnter();
+            break;
+
+        case 3:
+            std::cout &lt;&lt; &quot;Running hexo g ...\n&quot;;
+            runCmd(&quot;hexo g&quot;);
+            waitEnter();
+            std::cout &lt;&lt; &quot;Waiting 6 seconds ...\n&quot;;
+            Sleep(6000);
+            std::cout &lt;&lt; &quot;Running hexo d ...\n&quot;;
+            runCmd(&quot;hexo d&quot;);
+            waitEnter();
+            break;
+
+        case 5:   // 新增：打开 _posts 目录
+            std::cout &lt;&lt; &quot;Opening _posts folder ...\n&quot;;
+            runCmd(&quot;explorer .&quot;);
+            waitEnter();
+            break;
+
+        case 6:
+        &#123;
+            std::cout &lt;&lt; &quot;Enter post title (may contain spaces): &quot;;
+            std::cin.sync();
+            std::cin.clear();
+            std::string title;
+            std::getline(std::cin, title);
+            if (title.empty())
+            &#123;
+                std::cout &lt;&lt; &quot;Empty title, cancelled.\n&quot;;
+                break;
+            &#125;
+
+            std::string cmd = &quot;hexo new \&quot;&quot; + title + &quot;\&quot;&quot;;
+            std::cout &lt;&lt; &quot;Running: &quot; &lt;&lt; cmd &lt;&lt; &quot;\n&quot;;
+            runCmd(cmd);
+
+            std::string fileName;
+            for (std::string::size_type i = 0; i &lt; title.size(); ++i)
+            &#123;
+                char c = title[i];
+                if (c == &#39; &#39;)  fileName += &#39;-&#39;;
+                else           fileName += static_cast&lt;char&gt;(std::tolower(c));
+            &#125;
+            fileName += &quot;.md&quot;;
+
+            std::string npp     = &quot;\&quot;D:\\7zip\\a.minitools\\notepadPP\\Notepad++\\notepad++.exe\&quot;&quot;;
+            std::string openCmd = npp + &quot; &quot; + fileName;
+            std::cout &lt;&lt; &quot;Opening: &quot; &lt;&lt; fileName &lt;&lt; &quot;\n&quot;;
+            runCmd(openCmd);
+            waitEnter();
+            break;
+        &#125;
+
+        case 0:
+            std::cout &lt;&lt; &quot;Bye.\n&quot;;
+            return 0;
+
+        default:
+            std::cout &lt;&lt; &quot;Invalid choice.\n&quot;;
+            break;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/12/code-of-hexo-helpper/" data-id="cmfgrm3jk00004od54c59d1pa" data-title="code of hexo_helpper" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-BWQ-4-hours-passed" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/12/BWQ-4-hours-passed/" class="article-date">
@@ -85,7 +269,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/12/BWQ-4-hours-passed/">BWQ 4 hours passed</a>
+      <a class="p-name article-title" href="/2025/09/12/BWQ-4-hours-passed/">Oh my God, 4 hours passed</a>
     </h1>
   
 
@@ -93,12 +277,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>开发那个应用并作优化，花费了4个小时，大概。<br>中间没去厕所，忘了，哈哈。<br>最开始打算使用C#开发，但是安装好了.NET ,想想还是算了。毕竟cmd命令也可以使用c语言实现。<br>为什么呢？<br>因为我刚上大学，发现可以使用C语言控制关机 shutdown \t 呢？<br>就这样子吧</p>
+        <p>开发那个应用并作优化，花费了4个小时，大概。<br>中间没去厕所，忘了，哈哈。<br>最开始打算使用C#开发，但是安装好了.NET ,想想还是算了。<br>毕竟cmd命令也可以使用c语言实现。<br>为什么呢？<br>因为我刚上大学时，发现可以使用C语言控制关机 shutdown \t 呢？<br>就这样子吧。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/12/BWQ-4-hours-passed/" data-id="cmfgnpod20000ggd5dkll1ov2" data-title="BWQ 4 hours passed" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/12/BWQ-4-hours-passed/" data-id="cmfgnpod20000ggd5dkll1ov2" data-title="Oh my God, 4 hours passed" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -293,7 +477,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/11/what-you-like-is-around-you-about-love/">你期待的可能就在你的身边-望夫成龙观后感</a>
+      <a class="p-name article-title" href="/2025/09/11/what-you-like-is-around-you-about-love/">你期待的可能就在你的身边</a>
     </h1>
   
 
@@ -301,7 +485,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="望夫成龙"><a href="#望夫成龙" class="headerlink" title="望夫成龙"></a>望夫成龙</h2><p>故事是具有喜剧色彩的。<br>故事中的阿金、女孩阿娣<br>故事的开始，女孩父亲不支持他们的恋情，施加阻碍。<br>后来，女孩去和男孩结婚，住的条件很一般；<br>女孩发现男孩赌博，拉回了他；<br>女孩去舞厅上班，给男孩赚工作需要的起始资金；<br>男孩工资上涨，却开始讨厌起那个和自己脱节太久的妻子；<br>两人分开<br>两人2年之后再见面，像朋友，怕错过的他们最终又抱在一起。</p>
+        <h2 id="望夫成龙观后感"><a href="#望夫成龙观后感" class="headerlink" title="-望夫成龙观后感"></a>-望夫成龙观后感</h2><p>故事是具有喜剧色彩的。<br>故事中的阿金、女孩阿娣<br>故事的开始，女孩父亲不支持他们的恋情，施加阻碍。<br>后来，女孩去和男孩结婚，住的条件很一般；<br>女孩发现男孩赌博，拉回了他；<br>女孩去舞厅上班，给男孩赚工作需要的起始资金；<br>男孩工资上涨，却开始讨厌起那个和自己脱节太久的妻子；<br>两人分开<br>两人2年之后再见面，像朋友，怕错过的他们最终又抱在一起。</p>
 <blockquote>
 <p>出租房时他们的关系是对等的，搬到高级公寓后金水的层次超越了阿娣，所以他们走向分别…看似合理…可是有谁想过曾经没住进出租屋前，阿娣的层次是高于金水的…是阿娣义无反顾、无视阶层差异奔向金水的呢…是阿娣跟着金水去出租屋，把自己的基层放低到金水那一级的…所以阶层只是借口，有没有那颗义无反顾的心，有没有那个陪爱人、辅助爱人成长的勇气才是真的…阶层差异只是站在选择的路口给自己的理由罢了…</p>
 </blockquote>
@@ -310,7 +494,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/11/what-you-like-is-around-you-about-love/" data-id="cmfgj9jh40001vwd59nicchk0" data-title="你期待的可能就在你的身边-望夫成龙观后感" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/11/what-you-like-is-around-you-about-love/" data-id="cmfgj9jh40001vwd59nicchk0" data-title="你期待的可能就在你的身边" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -595,47 +779,6 @@
 
 
   
-    <article id="post-my-4th-page" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/09/my-4th-page/" class="article-date">
-  <time class="dt-published" datetime="2025-09-08T17:01:15.000Z" itemprop="datePublished">2025-09-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/09/my-4th-page/">my 4th page</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>项目看板<br>学习英语语–争取考过PTE65分—-预计到考研以后-20260101左右<br>学习软件设计–考软件设计师-中级–已经报名<br>学习日语–作为第二条外出就业的备选方案–软件设计在日本相对对开发者友好一点；<br>学习心理学–做好心灵的维护；</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/09/my-4th-page/" data-id="cmfbvcxm30002csd5bx4i9gsr" data-title="my 4th page" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project/" rel="tag">project</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -686,7 +829,11 @@
       <ul>
         
           <li>
-            <a href="/2025/09/12/BWQ-4-hours-passed/">BWQ 4 hours passed</a>
+            <a href="/2025/09/12/code-of-hexo-helpper/">code of hexo_helpper</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/12/BWQ-4-hours-passed/">Oh my God, 4 hours passed</a>
           </li>
         
           <li>
@@ -699,10 +846,6 @@
         
           <li>
             <a href="/2025/09/12/my-helpful-exep-born/">my helpful exep born</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/11/what-you-like-is-around-you-about-love/">你期待的可能就在你的身边-望夫成龙观后感</a>
           </li>
         
       </ul>
