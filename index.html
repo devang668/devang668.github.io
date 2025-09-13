@@ -227,6 +227,14 @@
 <p>您开机或登录Windows后，任务计划程序会自动在后台无窗口地运行本地Web服务器。</p>
 <p>当您打开V2rayN时（或者V2rayN随开机自启时），它会根据设置，自动从 <a target="_blank" rel="noopener" href="http://127.0.0.1:8080/v.txt">http://127.0.0.1:8080/v.txt</a> 这个地址检查更新。</p>
 <p>由于这个地址指向的就是您本地每日更新的文件，V2总能获取到最新的节点信息。</p>
+<p>但是这并不是完美的</p>
+<ul>
+<li><p>这一个不用写文本路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 获取当前VBScript文件的完整路径</span><br><span class="line">strScriptPath = WScript.ScriptFullName</span><br><span class="line"></span><br><span class="line">&#x27; 提取路径中的目录部分（去掉文件名）</span><br><span class="line">Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)</span><br><span class="line">strScriptDir = objFSO.GetParentFolderName(strScriptPath)</span><br><span class="line"></span><br><span class="line">&#x27; 拼接同目录下的bat文件路径</span><br><span class="line">strBatPath = objFSO.BuildPath(strScriptDir, &quot;start_server.bat&quot;)</span><br><span class="line"></span><br><span class="line">&#x27; 运行bat文件（隐藏窗口）</span><br><span class="line">Set ws = CreateObject(&quot;Wscript.Shell&quot;)</span><br><span class="line">ws.Run &quot;&quot;&quot;&quot; &amp; strBatPath &amp; &quot;&quot;&quot; /start&quot;, 0  &#x27; 双引号处理路径中的空格问题</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这个还可以确认操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
