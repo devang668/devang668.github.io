@@ -71,6 +71,226 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Copy a Web site to research" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/11/Copy%20a%20Web%20site%20to%20research/" class="article-date">
+  <time class="dt-published" datetime="2025-09-10T22:45:45.000Z" itemprop="datePublished">2025-09-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/11/Copy%20a%20Web%20site%20to%20research/">Copy a Web site to research</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>目前 GitHub 上最火、<strong>“粘贴网址就能把整个网站克隆成可运行 React 项目”</strong> 的开源方案，主要集中在下面 3 个仓库，按“傻瓜程度”与“可玩性”排序，给你一份直抄清单：</p>
+<hr>
+<h3 id="1️⃣-Open-Lovable（🔥-最火）"><a href="#1️⃣-Open-Lovable（🔥-最火）" class="headerlink" title="1️⃣ Open-Lovable（🔥 最火）"></a>1️⃣ Open-Lovable（🔥 最火）</h3><ul>
+<li><strong>一句话描述</strong>：输入任意网址 → 10 秒生成 <strong>React+Tailwind</strong> 源码，本地 <code>npm run dev</code> 就能跑。  </li>
+<li><strong>核心链路</strong>：Firecrawl 抓取 → GPT-4o&#x2F;Claude&#x2F;Gemini 生成代码 → E2B 沙盒自动启动。  </li>
+<li><strong>GitHub</strong>：<a target="_blank" rel="noopener" href="https://github.com/mendableai/open-lovable">https://github.com/mendableai/open-lovable</a>  </li>
+<li><strong>亮点</strong>  <ul>
+<li>支持 <strong>全栈</strong>（前端 + 可选 Node&#x2F;Supabase 后端）。  </li>
+<li>可选模型、可改 prompt，生成完直接在浏览器里二次编辑。  </li>
+<li>MIT 协议，<strong>可商用</strong>。</li>
+</ul>
+</li>
+<li><strong>注意</strong>  <ul>
+<li>需要自备 OpenAI &#x2F; Anthropic &#x2F; Google API key（抓取+生成两次调用，<strong>一次克隆约 ¥0.3-0.8</strong>）。  </li>
+<li>国内网络需给 Firecrawl 配代理，否则抓站环节 404。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>如果你想“<strong>先跑起来再改</strong>”，这是当下最省心的方案。</p>
+</blockquote>
+<hr>
+<h3 id="2️⃣-Screenshot-to-Code（📸-截图流派）"><a href="#2️⃣-Screenshot-to-Code（📸-截图流派）" class="headerlink" title="2️⃣ Screenshot-to-Code（📸 截图流派）"></a>2️⃣ Screenshot-to-Code（📸 截图流派）</h3><ul>
+<li><strong>一句话描述</strong>：<strong>上传一张网页截图</strong> → 自动生成 HTML&#x2F;React&#x2F;Vue 代码，还能让 DALL·E 3 把缺失图片也补出来。  </li>
+<li><strong>GitHub</strong>：<a target="_blank" rel="noopener" href="https://github.com/abi/screenshot-to-code">https://github.com/abi/screenshot-to-code</a>  </li>
+<li><strong>亮点</strong>  <ul>
+<li>不需要目标站点可访问，<strong>“看图写码”</strong>，对逆向敏感站很友好。  </li>
+<li>支持 <strong>React + Tailwind &#x2F; Vue + Tailwind &#x2F; Bootstrap</strong> 多技术栈切换。</li>
+</ul>
+</li>
+<li><strong>注意</strong>  <ul>
+<li>只还原<strong>视觉层</strong>，交互逻辑、数据接口需要你自己补。  </li>
+<li>同样需要 GPT-4V API key（<strong>一张图 ≈ ¥0.15</strong>）。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>适合做“<strong>像素级临摹</strong>”或没有后端数据的静态页。</p>
+</blockquote>
+<hr>
+<h3 id="3️⃣-SiteCopy（🗂️-传统整站镜像）"><a href="#3️⃣-SiteCopy（🗂️-传统整站镜像）" class="headerlink" title="3️⃣ SiteCopy（🗂️ 传统整站镜像）"></a>3️⃣ SiteCopy（🗂️ 传统整站镜像）</h3><ul>
+<li><strong>一句话描述</strong>：经典 Python CLI，<strong>把整站 HTML&#x2F;CSS&#x2F;JS&#x2F; 图片甚至 MySQL 一起搬下来</strong>，适合“搬家”而非“改代码”。  </li>
+<li><strong>GitHub</strong>：<a target="_blank" rel="noopener" href="https://github.com/Threezh1/SiteCopy">https://github.com/Threezh1/SiteCopy</a>  </li>
+<li><strong>亮点</strong>  <ul>
+<li>递归下载 + 数据库导出 + 配置文件自动改写，<strong>一键平移服务器</strong>。  </li>
+<li>不需要 AI key，纯本地流量。</li>
+</ul>
+</li>
+<li><strong>注意</strong>  <ul>
+<li>生成的是<strong>原样静态备份</strong>，不会给你 React 组件。  </li>
+<li>仅适合 Linux &#x2F; macOS，Windows 需 WSL。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>想“<strong>原站整搬</strong>”或做灰度备份用它最稳。</p>
+</blockquote>
+<hr>
+<h3 id="✅-30-秒选型建议"><a href="#✅-30-秒选型建议" class="headerlink" title="✅ 30 秒选型建议"></a>✅ 30 秒选型建议</h3><table>
+<thead>
+<tr>
+<th>目的</th>
+<th>直接选</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>快速拿到可改的 React 项目</strong></td>
+<td>Open-Lovable</td>
+</tr>
+<tr>
+<td><strong>只有设计稿 &#x2F; 页面已挂</strong></td>
+<td>Screenshot-to-Code</td>
+</tr>
+<tr>
+<td><strong>整站迁移、不改技术栈</strong></td>
+<td>SiteCopy</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="🚀-本地-3-步跑起来（以-Open-Lovable-为例）"><a href="#🚀-本地-3-步跑起来（以-Open-Lovable-为例）" class="headerlink" title="🚀 本地 3 步跑起来（以 Open-Lovable 为例）"></a>🚀 本地 3 步跑起来（以 Open-Lovable 为例）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/mendableai/open-lovable.git</span><br><span class="line"><span class="built_in">cd</span> open-lovable</span><br><span class="line"><span class="built_in">cp</span> .env.example .env.local</span><br><span class="line"><span class="comment"># 填好 OPENAI_API_KEY 或 ANTHROPIC_API_KEY</span></span><br><span class="line">npm i</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>浏览器打开 <code>http://localhost:5173</code>，贴目标 URL → <strong>Generate</strong>，等 10 秒就能下载完整 React 项目。</p>
+<hr>
+<p>克隆愉快，<strong>记得遵守对方版权、robots.txt 及相关法律</strong>，别把“学习副本”当成“上线盗版”。  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/11/Copy%20a%20Web%20site%20to%20research/" data-id="cmff1pvmt0000h4d576vv27vd" data-title="Copy a Web site to research" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-my-6th-post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/10/my-6th-post/" class="article-date">
+  <time class="dt-published" datetime="2025-09-10T01:14:19.000Z" itemprop="datePublished">2025-09-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/10/my-6th-post/">my 6th post</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="在这里测试图片功能"><a href="#在这里测试图片功能" class="headerlink" title="在这里测试图片功能"></a>在这里测试图片功能</h2><p>这是一个图片</p>
+<p><img src="D:\ProgramData\git\blogs\source_posts\my-6th-post\giuseppe-famiani-npaEc3Zc-RI-unsplash.jpg" alt="giuseppe-famiani-npaEc3Zc-RI-unsplash"></p>
+<p>这是第二个</p>
+<p><img src="/./my-6th-post/giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2.jpg" alt="giuseppe-famiani-npaEc3Zc-RI-unsplash"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/10/my-6th-post/" data-id="cmfdasxsq00009kd5bkk7eujp" data-title="my 6th post" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-my-5th-post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/09/my-5th-post/" class="article-date">
+  <time class="dt-published" datetime="2025-09-09T01:13:17.000Z" itemprop="datePublished">2025-09-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/09/my-5th-post/">my 5th post</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="曾shi-Qiang"><a href="#曾shi-Qiang" class="headerlink" title="曾shi Qiang"></a>曾shi Qiang</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.toutiao.com/video/7547499673343328806/">https://www.toutiao.com/video/7547499673343328806/</a><br>富不住大屋，穷不走远路。<br>一切都要平和，要和谐；他不是让你安于现状，而是积攒条件，注意内在，幸福长远。</p>
+</blockquote>
+<h1 id="曾仕强教授：“富不住大屋，穷不行远路”解读（基于视频核心观点整理）"><a href="#曾仕强教授：“富不住大屋，穷不行远路”解读（基于视频核心观点整理）" class="headerlink" title="曾仕强教授：“富不住大屋，穷不行远路”解读（基于视频核心观点整理）"></a>曾仕强教授：“富不住大屋，穷不行远路”解读（基于视频核心观点整理）</h1><p>大家好，今天和大家分享的是咱们传统国学里的一句智慧箴言——“富不住大屋，穷不行远路”。这句话听起来简单，背后却藏着对生活、对人性的深刻洞察，咱们一步步把它讲透。</p>
+<p>先看前半句，“富不住大屋”。很多人觉得，有钱了就该住大房子，住豪宅，这才是“享福”，才配得上自己的财富。但从咱们传统文化的视角来看，这其实藏着几个需要警惕的地方。</p>
+<p>第一，“大屋”往往意味着“大消耗”。不光是买房子的时候花钱多，后续的维护、打理、开销，都是一笔不小的数目。更重要的是，“大”有时候会让人“散”——心思散了，精力散了。比如原本专注于事业、专注于家庭的人，住进大屋之后，可能会把心思放在怎么装修、怎么炫耀、怎么维护面子上，反而忘了财富积累的初心，也忘了经营生活的根本。</p>
+<p>第二，“大屋”容易招“是非”。咱们老祖宗常说“树大招风”，房子太大、太显眼，很容易引起别人的嫉妒，甚至招来不必要的麻烦。你过得好，别人看在眼里，有的是羡慕，有的可能就是“红眼病”，甚至会给你设绊子、传闲话。财富需要“藏”，需要“稳”，而不是靠“大屋”去张扬。真正的富足，是内心的安定，不是外在的排场。</p>
+<p>第三，“大屋”可能让家人“离”。房子大了，空间隔得远了，家人之间的交流反而可能变少。以前住小房子，一家人挤在一块，吃饭、聊天、说说笑笑，感情很亲；住了大屋，各自待在自己的房间，少了那份“挤出来”的温情，反而容易生分。咱们追求财富，最终是为了家庭和睦，要是因为“大屋”丢了这份和睦，那就是本末倒置了。</p>
+<p>再看后半句，“穷不行远路”。有人可能会说，“穷”更要去远方闯一闯，说不定能找到机会改变命运？这话有道理，但得有个前提——“行远路”需要成本，不光是钱，还有精力、风险，穷人往往“输不起”。</p>
+<p>第一，“远路”的“经济成本”穷人扛不住。出门在外，吃、住、行哪样不要钱？穷人本身积蓄就少，一旦出门，要是找不到工作，或者遇到点意外，比如生病、丢东西，很容易陷入绝境。到时候不仅自己难，还可能连累家里人——本来家里就不宽裕，再寄钱给你应急，更是雪上加霜。咱们做事要“量力而行”，“穷”的时候，更该先把眼前的日子稳住，把能抓住的小机会做好，而不是盲目地“远走他乡”。</p>
+<p>第二，“远路”的“风险成本”穷人耗不起。出门在外，陌生的环境、不熟悉的人，到处都是不确定性。你不知道会遇到什么人，会碰到什么事，要是走了弯路、受了骗，对穷人来说，可能就是“灭顶之灾”。比如有的人穷的时候想出门打工，结果被中介骗了钱，或者进了黑工厂，不仅没赚到钱，还受了罪，回来之后更难翻身。与其冒这么大的风险“行远路”，不如先在熟悉的地方积累经验、攒点本钱，等有了基础再做打算。</p>
+<p>第三，“远路”可能让“责任”空了。穷人家里，往往更需要人扛起责任——比如照顾老人、陪伴孩子、帮衬家人。要是一味地“行远路”，把家里的担子扔给别人，就算最后赚了点钱，可能也补不回亲情的空缺，补不回对家人的亏欠。咱们传统文化里讲“孝”、讲“担当”，“穷”的时候，守住家人、守住当下的责任，比盲目追求远方的“机会”更重要。</p>
+<p>其实不管是“富不住大屋”，还是“穷不行远路”，核心就一个——“务实”，就像咱们老祖宗讲的“中庸之道”。有钱了，别被“排场”迷了眼，要守住“稳”；没钱了，别被“幻想”冲了头，要守住“实”。生活不是比谁的房子大，也不是比谁走的路远，而是比谁能把日子过得踏实、安稳，比谁能守住内心的平和与家庭的和睦。</p>
+<p>这就是老祖宗传下来的智慧，看着简单，真要做到，需要咱们多琢磨、多反思，把这些道理融进日常的生活里，才是真的懂了、真的用了。</p>
+<p>注：以上文字稿基于视频标题及曾仕强教授一贯的国学讲学风格、核心观点整理而成，若需逐字逐句的完整内容，可参考原视频（链接：<a target="_blank" rel="noopener" href="https://www.toutiao.com/video/7547499673343328806/%EF%BC%89%E7%9A%84%E5%AD%97%E5%B9%95%E5%8A%9F%E8%83%BD%EF%BC%88%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8%E5%86%85%E9%80%9A%E5%B8%B8%E5%8F%AF%E5%BC%80%E5%90%AF%E2%80%9C%E5%AD%97%E5%B9%95%E2%80%9D%E9%80%89%E9%A1%B9%EF%BC%89%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%9B%B4%E7%B2%BE%E5%87%86%E7%9A%84%E5%AE%9E%E6%97%B6%E5%86%85%E5%AE%B9%E3%80%82">https://www.toutiao.com/video/7547499673343328806/）的字幕功能（视频播放器内通常可开启“字幕”选项），获取更精准的实时内容。</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/09/my-5th-post/" data-id="cmfbvcxm60003csd577adh7o1" data-title="my 5th post" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/culture/" rel="tag">culture</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-my-4th-page" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/09/my-4th-page/" class="article-date">
@@ -134,14 +354,21 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="note-：-永远好奇，保持敬畏"><a href="#note-：-永远好奇，保持敬畏" class="headerlink" title="note ： 永远好奇，保持敬畏"></a>note ： 永远好奇，保持敬畏</h1><h2 id="tools-and-bussiness"><a href="#tools-and-bussiness" class="headerlink" title="tools and bussiness"></a>tools and bussiness</h2><h2 id="怎么使用国外的大模型辅助编程"><a href="#怎么使用国外的大模型辅助编程" class="headerlink" title="怎么使用国外的大模型辅助编程"></a>怎么使用国外的大模型辅助编程</h2><p><a target="_blank" rel="noopener" href="https://openrouter.ai/settings/keys">https://openrouter.ai/settings/keys</a>  花钱就好</p>
+        <h1 id="note-：-永远好奇，保持敬畏"><a href="#note-：-永远好奇，保持敬畏" class="headerlink" title="note ： 永远好奇，保持敬畏"></a>note ： 永远好奇，保持敬畏</h1><h2 id="云服务器"><a href="#云服务器" class="headerlink" title="云服务器"></a>云服务器</h2><pre><code>https://console.tencentcloud.com/edgeone/pages
+https://dash.cloudflare.com/
+</code></pre>
+<h2 id="tools-and-bussiness"><a href="#tools-and-bussiness" class="headerlink" title="tools and bussiness"></a>tools and bussiness</h2><h2 id="怎么使用国外的大模型辅助编程"><a href="#怎么使用国外的大模型辅助编程" class="headerlink" title="怎么使用国外的大模型辅助编程"></a>怎么使用国外的大模型辅助编程</h2><p><a target="_blank" rel="noopener" href="https://openrouter.ai/settings/keys">https://openrouter.ai/settings/keys</a>  花钱就好</p>
 <p>或者使用轮询机制去搞google-gemini</p>
 <h3 id="creat-some-things"><a href="#creat-some-things" class="headerlink" title="creat some things"></a>creat some things</h3><p>090901做一个windows工具</p>
 <blockquote>
 <p>是否存在这样的工具，有gui ，可以新建自己的脚本比如bat，然后保存瑕疵用的时候不用再输入，有吗</p>
 </blockquote>
 <h3 id="voice-and-vodeo"><a href="#voice-and-vodeo" class="headerlink" title="voice and vodeo"></a>voice and vodeo</h3><p> 一个做博客的方案<br>语音自然很美<br><a target="_blank" rel="noopener" href="https://www.tbox.cn/community">这里的播客制作很好</a></p>
-<h3 id="community"><a href="#community" class="headerlink" title="community"></a>community</h3><pre><code>一个技术社区 178ac https://segmentfault.com/help/rights
+<h3 id="community"><a href="#community" class="headerlink" title="community"></a>community</h3><pre><code>这个社区超级豪，给免费算力api [modescope](https://www.modelscope.cn/my/overview)
+这个社区超级有意思google https://developers.google.cn/solutions/catalog?hl=zh-cn
+一个L站 https://linux.do/c/resource/cloud-asset/94
+一个技术社区 178ac https://segmentfault.com/help/rights
+2048AI社区   https://2048ai.net/
 听歌好去处 https://sfkm.me/?mi=266#music
 </code></pre>
 <h3 id="coding"><a href="#coding" class="headerlink" title="coding"></a>coding</h3><p>一个可以0基础开发属于自己想法的app 的网站（主要是前端）<a target="_blank" rel="noopener" href="https://www.haisnap.com/">https://www.haisnap.com/</a></p>
@@ -380,23 +607,23 @@
       <ul>
         
           <li>
+            <a href="/2025/09/13/where-is-my-python/">where is my python</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/12/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Firebase-Hosting%E6%9D%A5%E6%89%98%E7%AE%A1%E7%BD%91%E7%AB%99/">如何利用Firebase Hosting来托管网站</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/12/about-html-listening/">about html_listening</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/12/code-of-hexo-helpper/">code of hexo_helpper</a>
           </li>
         
           <li>
             <a href="/2025/09/12/BWQ-4-hours-passed/">Oh my God, 4 hours passed</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/12/my-new-exe-information/">my new exe information</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/12/ways-to-be-rich/">ways to be rich</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/12/my-helpful-exep-born/">my helpful exep born</a>
           </li>
         
       </ul>
