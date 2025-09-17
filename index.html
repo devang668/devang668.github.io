@@ -71,6 +71,68 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mytest-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/17/mytest-1/" class="article-date">
+  <time class="dt-published" datetime="2025-09-16T22:45:50.053Z" itemprop="datePublished">2025-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/17/mytest-1/">GitHub limited Capacity</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>参考 <a target="_blank" rel="noopener" href="https://docs.github.com/zh/repositories/creating-and-managing-repositories/repository-limits">https://docs.github.com/zh/repositories/creating-and-managing-repositories/repository-limits</a></p>
+<h1 id="GitHub-仓库与文件大小限制说明"><a href="#GitHub-仓库与文件大小限制说明" class="headerlink" title="GitHub 仓库与文件大小限制说明"></a>GitHub 仓库与文件大小限制说明</h1><p>为确保平台性能与可靠性，GitHub 对仓库和文件设置了特定的大小限制。这些限制对于维护平台基础设施稳定及保障用户体验至关重要。</p>
+<h2 id="一、文件大小限制"><a href="#一、文件大小限制" class="headerlink" title="一、文件大小限制"></a>一、文件大小限制</h2><ul>
+<li><strong>超过 50 MB 的文件</strong>：当你尝试添加或更新超过 50 MB 的文件时，GitHub 会发出警告。尽管推送操作仍可成功，但建议移除此类文件，以避免引发性能问题。</li>
+<li><strong>超过 100 MB 的文件</strong>：GitHub 会阻止上传超过 100 MB 的文件。若需管理此类文件，必须使用 Git 大文件存储（Git Large File Storage，简称 Git LFS）。</li>
+<li><strong>浏览器上传限制</strong>：通过 GitHub 网页界面添加的文件，大小不能超过 25 MB。</li>
+</ul>
+<h2 id="二、仓库大小限制"><a href="#二、仓库大小限制" class="headerlink" title="二、仓库大小限制"></a>二、仓库大小限制</h2><ul>
+<li><strong>建议大小</strong>：仓库理想情况下应保持在 1 GB 以内，且强烈建议不超过 5 GB。</li>
+<li><strong>超出限制的处理</strong>：若某个仓库对 GitHub 基础设施造成显著影响，你可能会收到 GitHub 支持团队的通知，要求采取整改措施。</li>
+</ul>
+<h2 id="三、大文件管理方法"><a href="#三、大文件管理方法" class="headerlink" title="三、大文件管理方法"></a>三、大文件管理方法</h2><ol>
+<li>使用 Git LFS 跟踪大文件，避免导致仓库体积膨胀<sup>1,2</sup>。</li>
+<li>若需分发大型二进制文件，可在 GitHub 上创建“发布版本”（Releases）。每个发布版本中的单个文件最大可支持 2 GB<sup>1</sup>。</li>
+<li>避免使用 Git 存储大型 SQL 文件或备份文件。此类文件应改用文件共享服务或专门的备份工具<sup>1</sup>。</li>
+</ol>
+<h2 id="四、减小仓库体积的方法"><a href="#四、减小仓库体积的方法" class="headerlink" title="四、减小仓库体积的方法"></a>四、减小仓库体积的方法</h2><ol>
+<li>使用 <code>git rm</code> 命令删除不必要的文件，并通过修改提交（amend commits）清理提交历史<sup>1</sup>。</li>
+<li>执行 <code>git gc</code> 命令压缩 Git 对象，优化存储占用<sup>2</sup>。</li>
+<li>使用 <code>git-sizer</code> 等工具分析仓库大小，定位导致体积过大的问题区域<sup>1,2</sup>。</li>
+</ol>
+<p>遵循上述指南，你可以有效管理 GitHub 仓库，确保其性能达到最佳状态，同时符合平台的大小限制要求。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/17/mytest-1/" data-id="cmfjdpspe0002dcd59osz0h69" data-title="GitHub limited Capacity" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-e-卖奖牌-哈哈哈" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/14/e-%E5%8D%96%E5%A5%96%E7%89%8C-%E5%93%88%E5%93%88%E5%93%88/" class="article-date">
@@ -112,44 +174,6 @@
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/society/" rel="tag">society</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-mytest-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/14/mytest-1/" class="article-date">
-  <time class="dt-published" datetime="2025-09-13T22:45:50.053Z" itemprop="datePublished">2025-09-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/14/mytest-1/">mytest 1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/14/mytest-1/" data-id="cmfjdpspe0002dcd59osz0h69" data-title="mytest 1" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
     </footer>
   </div>
   
@@ -400,7 +424,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 获取当前VBScript文件的完整路径</span><br><span class="line">strScriptPath = WScript.ScriptFullName</span><br><span class="line"></span><br><span class="line">&#x27; 提取路径中的目录部分（去掉文件名）</span><br><span class="line">Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)</span><br><span class="line">strScriptDir = objFSO.GetParentFolderName(strScriptPath)</span><br><span class="line"></span><br><span class="line">&#x27; 拼接同目录下的bat文件路径</span><br><span class="line">strBatPath = objFSO.BuildPath(strScriptDir, &quot;start_server.bat&quot;)</span><br><span class="line"></span><br><span class="line">&#x27; 运行bat文件（隐藏窗口）</span><br><span class="line">Set ws = CreateObject(&quot;Wscript.Shell&quot;)</span><br><span class="line">ws.Run &quot;&quot;&quot;&quot; &amp; strBatPath &amp; &quot;&quot;&quot; /start&quot;, 0  &#x27; 双引号处理路径中的空格问题</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>这个还可以确认操作</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 获取当前VBScript文件的完整路径</span><br><span class="line">strScriptPath = WScript.ScriptFullName</span><br><span class="line"></span><br><span class="line">&#x27; 提取路径中的目录部分</span><br><span class="line">Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)</span><br><span class="line">strScriptDir = objFSO.GetParentFolderName(strScriptPath)</span><br><span class="line"></span><br><span class="line">&#x27; 拼接同目录下的bat文件路径（这里使用你的bat文件名1.bat）</span><br><span class="line">strBatPath = objFSO.BuildPath(strScriptDir, &quot;1.bat&quot;)</span><br><span class="line"></span><br><span class="line">&#x27; 运行bat文件（显示窗口以便查看，等待执行完成）</span><br><span class="line">Set ws = CreateObject(&quot;Wscript.Shell&quot;)</span><br><span class="line">returnCode = ws.run(&quot;D:\7zip\a.minitools\vpn\SubsCheck_Win_GUI\output\1.bat /start&quot;, 0)</span><br><span class="line"></span><br><span class="line">&#x27; 弹出提示窗口，3秒后自动关闭，让你有时间确认结果</span><br><span class="line">ws.Popup &quot;操作已完成，3秒后自动退出...&quot;, 3, &quot;提示&quot;, 0 &#x27; 0表示只有&quot;确定&quot;按钮</span><br><span class="line"></span><br><span class="line">&#x27; 自动退出脚本</span><br><span class="line">WScript.Quit returnCode</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -776,11 +800,11 @@ int main()
       <ul>
         
           <li>
-            <a href="/2025/09/14/e-%E5%8D%96%E5%A5%96%E7%89%8C-%E5%93%88%E5%93%88%E5%93%88/">e-卖奖牌 哈哈哈</a>
+            <a href="/2025/09/17/mytest-1/">GitHub limited Capacity</a>
           </li>
         
           <li>
-            <a href="/2025/09/14/mytest-1/">mytest 1</a>
+            <a href="/2025/09/14/e-%E5%8D%96%E5%A5%96%E7%89%8C-%E5%93%88%E5%93%88%E5%93%88/">e-卖奖牌 哈哈哈</a>
           </li>
         
           <li>
