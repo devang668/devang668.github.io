@@ -71,6 +71,129 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Copy a Web site to research" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/11/Copy%20a%20Web%20site%20to%20research/" class="article-date">
+  <time class="dt-published" datetime="2025-09-10T22:45:45.000Z" itemprop="datePublished">2025-09-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/11/Copy%20a%20Web%20site%20to%20research/">Copy a Web site to research</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>目前 GitHub 上最火、<strong>“粘贴网址就能把整个网站克隆成可运行 React 项目”</strong> 的开源方案，主要集中在下面 3 个仓库，按“傻瓜程度”与“可玩性”排序，给你一份直抄清单：</p>
+<hr>
+<h3 id="1️⃣-Open-Lovable（🔥-最火）"><a href="#1️⃣-Open-Lovable（🔥-最火）" class="headerlink" title="1️⃣ Open-Lovable（🔥 最火）"></a>1️⃣ Open-Lovable（🔥 最火）</h3><ul>
+<li><strong>一句话描述</strong>：输入任意网址 → 10 秒生成 <strong>React+Tailwind</strong> 源码，本地 <code>npm run dev</code> 就能跑。  </li>
+<li><strong>核心链路</strong>：Firecrawl 抓取 → GPT-4o&#x2F;Claude&#x2F;Gemini 生成代码 → E2B 沙盒自动启动。  </li>
+<li><strong>GitHub</strong>：<a target="_blank" rel="noopener" href="https://github.com/mendableai/open-lovable">https://github.com/mendableai/open-lovable</a>  </li>
+<li><strong>亮点</strong>  <ul>
+<li>支持 <strong>全栈</strong>（前端 + 可选 Node&#x2F;Supabase 后端）。  </li>
+<li>可选模型、可改 prompt，生成完直接在浏览器里二次编辑。  </li>
+<li>MIT 协议，<strong>可商用</strong>。</li>
+</ul>
+</li>
+<li><strong>注意</strong>  <ul>
+<li>需要自备 OpenAI &#x2F; Anthropic &#x2F; Google API key（抓取+生成两次调用，<strong>一次克隆约 ¥0.3-0.8</strong>）。  </li>
+<li>国内网络需给 Firecrawl 配代理，否则抓站环节 404。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>如果你想“<strong>先跑起来再改</strong>”，这是当下最省心的方案。</p>
+</blockquote>
+<hr>
+<h3 id="2️⃣-Screenshot-to-Code（📸-截图流派）"><a href="#2️⃣-Screenshot-to-Code（📸-截图流派）" class="headerlink" title="2️⃣ Screenshot-to-Code（📸 截图流派）"></a>2️⃣ Screenshot-to-Code（📸 截图流派）</h3><ul>
+<li><strong>一句话描述</strong>：<strong>上传一张网页截图</strong> → 自动生成 HTML&#x2F;React&#x2F;Vue 代码，还能让 DALL·E 3 把缺失图片也补出来。  </li>
+<li><strong>GitHub</strong>：<a target="_blank" rel="noopener" href="https://github.com/abi/screenshot-to-code">https://github.com/abi/screenshot-to-code</a>  </li>
+<li><strong>亮点</strong>  <ul>
+<li>不需要目标站点可访问，<strong>“看图写码”</strong>，对逆向敏感站很友好。  </li>
+<li>支持 <strong>React + Tailwind &#x2F; Vue + Tailwind &#x2F; Bootstrap</strong> 多技术栈切换。</li>
+</ul>
+</li>
+<li><strong>注意</strong>  <ul>
+<li>只还原<strong>视觉层</strong>，交互逻辑、数据接口需要你自己补。  </li>
+<li>同样需要 GPT-4V API key（<strong>一张图 ≈ ¥0.15</strong>）。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>适合做“<strong>像素级临摹</strong>”或没有后端数据的静态页。</p>
+</blockquote>
+<hr>
+<h3 id="3️⃣-SiteCopy（🗂️-传统整站镜像）"><a href="#3️⃣-SiteCopy（🗂️-传统整站镜像）" class="headerlink" title="3️⃣ SiteCopy（🗂️ 传统整站镜像）"></a>3️⃣ SiteCopy（🗂️ 传统整站镜像）</h3><ul>
+<li><strong>一句话描述</strong>：经典 Python CLI，<strong>把整站 HTML&#x2F;CSS&#x2F;JS&#x2F; 图片甚至 MySQL 一起搬下来</strong>，适合“搬家”而非“改代码”。  </li>
+<li><strong>GitHub</strong>：<a target="_blank" rel="noopener" href="https://github.com/Threezh1/SiteCopy">https://github.com/Threezh1/SiteCopy</a>  </li>
+<li><strong>亮点</strong>  <ul>
+<li>递归下载 + 数据库导出 + 配置文件自动改写，<strong>一键平移服务器</strong>。  </li>
+<li>不需要 AI key，纯本地流量。</li>
+</ul>
+</li>
+<li><strong>注意</strong>  <ul>
+<li>生成的是<strong>原样静态备份</strong>，不会给你 React 组件。  </li>
+<li>仅适合 Linux &#x2F; macOS，Windows 需 WSL。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>想“<strong>原站整搬</strong>”或做灰度备份用它最稳。</p>
+</blockquote>
+<hr>
+<h3 id="✅-30-秒选型建议"><a href="#✅-30-秒选型建议" class="headerlink" title="✅ 30 秒选型建议"></a>✅ 30 秒选型建议</h3><table>
+<thead>
+<tr>
+<th>目的</th>
+<th>直接选</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>快速拿到可改的 React 项目</strong></td>
+<td>Open-Lovable</td>
+</tr>
+<tr>
+<td><strong>只有设计稿 &#x2F; 页面已挂</strong></td>
+<td>Screenshot-to-Code</td>
+</tr>
+<tr>
+<td><strong>整站迁移、不改技术栈</strong></td>
+<td>SiteCopy</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="🚀-本地-3-步跑起来（以-Open-Lovable-为例）"><a href="#🚀-本地-3-步跑起来（以-Open-Lovable-为例）" class="headerlink" title="🚀 本地 3 步跑起来（以 Open-Lovable 为例）"></a>🚀 本地 3 步跑起来（以 Open-Lovable 为例）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/mendableai/open-lovable.git</span><br><span class="line"><span class="built_in">cd</span> open-lovable</span><br><span class="line"><span class="built_in">cp</span> .env.example .env.local</span><br><span class="line"><span class="comment"># 填好 OPENAI_API_KEY 或 ANTHROPIC_API_KEY</span></span><br><span class="line">npm i</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<p>浏览器打开 <code>http://localhost:5173</code>，贴目标 URL → <strong>Generate</strong>，等 10 秒就能下载完整 React 项目。</p>
+<hr>
+<p>克隆愉快，<strong>记得遵守对方版权、robots.txt 及相关法律</strong>，别把“学习副本”当成“上线盗版”。  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/11/Copy%20a%20Web%20site%20to%20research/" data-id="cmfqefwnv000284d5d7tve19r" data-title="Copy a Web site to research" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-my-6th-post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/10/my-6th-post/" class="article-date">
@@ -96,12 +219,12 @@
         <h2 id="在这里测试图片功能"><a href="#在这里测试图片功能" class="headerlink" title="在这里测试图片功能"></a>在这里测试图片功能</h2><p>这是一个图片</p>
 <p><img src="D:\ProgramData\git\blogs\source_posts\my-6th-post\giuseppe-famiani-npaEc3Zc-RI-unsplash.jpg" alt="giuseppe-famiani-npaEc3Zc-RI-unsplash"></p>
 <p>这是第二个</p>
-<p><img src="/./my-6th-post/giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2.jpg" alt="giuseppe-famiani-npaEc3Zc-RI-unsplash"></p>
+<img src="/2025/09/10/my-6th-post/giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2.jpg" alt="giuseppe-famiani-npaEc3Zc-RI-unsplash" />
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/10/my-6th-post/" data-id="cmfdasxsq00009kd5bkk7eujp" data-title="my 6th post" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/10/my-6th-post/" data-id="cmfqefwoi000o84d553mtf87n" data-title="my 6th post" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -154,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/09/my-5th-post/" data-id="cmfbvcxm60003csd577adh7o1" data-title="my 5th post" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/09/my-5th-post/" data-id="cmfqefwog000m84d50tb95pr7" data-title="my 5th post" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -195,7 +318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/09/my-4th-page/" data-id="cmfbvcxm30002csd5bx4i9gsr" data-title="my 4th page" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/09/my-4th-page/" data-id="cmfqefwog000k84d558xk0ezo" data-title="my 4th page" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -278,7 +401,7 @@ UI漂亮  https://blog.nichijou.moe/posts/old/github-gpg/
 <p>这是使用vscde编写的，<br>用到的命令不多，主要就是</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;my seond post&quot;</span><br><span class="line">hexo new &quot;my 5th post&quot;</span><br><span class="line">hexo new,</span><br><span class="line">hexo s,</span><br><span class="line">hexo g,</span><br><span class="line">hexo d,</span><br><span class="line"></span><br><span class="line"># 引入文件</span><br><span class="line">[链接文本](文件路径)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>今天下雨了，今天在复习考研的政治课程还有背单词，这些其实都不如我专注解决这个博客故障那么痴迷；<br>主要就是，1-没法推送； 没法使用除了github以外的网址生成可访问的链接；3-自己的那个域名不知道怎么使用呢（现在还不太会）</p>
-<p>最后一个问题也解决了,关掉fastgithub 就好了<br><img src="/./pics/image.png" alt="alt text"><br><img src="/pics/image.png" alt="alt text"><br><img src="/image.png" alt="alt text"></p>
+<p>最后一个问题也解决了,关掉fastgithub 就好了<br><img src="/2025/09/08/my-second-post/pics/image.png" alt="alt text" /><br><img src="/pics/image.png" alt="alt text"><br><img src="/image.png" alt="alt text"></p>
 <h1 id="find-bugs-and-manage-it"><a href="#find-bugs-and-manage-it" class="headerlink" title="find bugs and manage it"></a>find bugs and manage it</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">网络没有问题</span><br><span class="line">hexo d 就是不可以正常推送显示 没有新的变动</span><br><span class="line">可是，我已经新建了文字，改动了内容</span><br><span class="line">采取 https://segmentfault.com/q/1010000018159092</span><br><span class="line">hexo clean ---&gt; hexo g ---&gt; hexo d</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="again-0"><a href="#again-0" class="headerlink" title="again-0"></a>again-0</h2><p>主要是上一篇文章出了点问题，无法同步图片似乎。</p>
 <p>如果说出现了怀疑是否有所有权的这种推送故障，<br>只需要关闭fastgithub代理就好。</p>
@@ -288,7 +411,7 @@ UI漂亮  https://blog.nichijou.moe/posts/old/github-gpg/
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/my-second-post/" data-id="cmfbvcxm90005csd5edyw14ty" data-title="my second post" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/08/my-second-post/" data-id="cmfqefwom000x84d5bxie4gnl" data-title="my second post" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -343,7 +466,7 @@ UI漂亮  https://blog.nichijou.moe/posts/old/github-gpg/
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/my-third-post/" data-id="cmfbvcxma0006csd51hx36d6z" data-title="my third post" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/08/my-third-post/" data-id="cmfqefwom000z84d52u2u38of" data-title="my third post" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -379,7 +502,7 @@ UI漂亮  https://blog.nichijou.moe/posts/old/github-gpg/
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="常用的地址"><a href="#常用的地址" class="headerlink" title="常用的地址"></a>常用的地址<a href></a></h1><p><a target="_blank" rel="noopener" href="https://www.ncss.cn/">大学生就业网</a><br><a target="_blank" rel="noopener" href="https://www.chsi.com.cn/">学信网</a><br><a target="_blank" rel="noopener" href="https://cet-bm.neea.edu.cn/">四六级和计算机</a><br><a target="_blank" rel="noopener" href="https://www.kimi.com/">kimi</a><br><a target="_blank" rel="noopener" href="https://flowus.cn/">笔记记录flwus</a><br><a href></a></p>
+        <h1 id="常用的地址"><a href="#常用的地址" class="headerlink" title="常用的地址"></a>常用的地址<a href=""></a></h1><p><a target="_blank" rel="noopener" href="https://www.ncss.cn/">大学生就业网</a><br><a target="_blank" rel="noopener" href="https://www.chsi.com.cn/">学信网</a><br><a target="_blank" rel="noopener" href="https://cet-bm.neea.edu.cn/">四六级和计算机</a><br><a target="_blank" rel="noopener" href="https://www.kimi.com/">kimi</a><br><a target="_blank" rel="noopener" href="https://flowus.cn/">笔记记录flwus</a><br><a href=""></a></p>
 <h2 id="songs"><a href="#songs" class="headerlink" title="songs"></a>songs</h2><p>Original_Mix_ - Avicii Japan Tour 2016<br><a target="_blank" rel="noopener" href="https://coursera.org/">https://coursera.org/</a></p>
 <hr>
 <h1 id="first-line"><a href="#first-line" class="headerlink" title="first line"></a>first line</h1><p>test for  many times</p>
@@ -391,7 +514,7 @@ UI漂亮  https://blog.nichijou.moe/posts/old/github-gpg/
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/my-md/" data-id="cmfbvcxm70004csd57rksf036" data-title="my.md" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/08/my-md/" data-id="cmfqefwok000s84d5d4r0dz0u" data-title="my.md" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -442,7 +565,7 @@ UI漂亮  https://blog.nichijou.moe/posts/old/github-gpg/
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/08/hello-world/" data-id="cmfbvcxlz0001csd5g4iwfeha" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/08/hello-world/" data-id="cmfqefwoc000e84d50yid4iqw" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -504,6 +627,10 @@ UI漂亮  https://blog.nichijou.moe/posts/old/github-gpg/
       <ul>
         
           <li>
+            <a href="/2025/09/19/wow-I-created-a-new-one/">wow I created a new one</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/18/test-for-pic/">test for pic</a>
           </li>
         
@@ -517,10 +644,6 @@ UI漂亮  https://blog.nichijou.moe/posts/old/github-gpg/
         
           <li>
             <a href="/2025/09/17/p-how-to-make-money-with-tk/">p how to make money with tk</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/17/GitHub-limited-Capacity/">GitHub limited Capacity</a>
           </li>
         
       </ul>
