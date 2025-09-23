@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>background cmd | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="要隐藏或最小化CMD窗口，需要使用不同的方法，取决于你的操作系统和Python环境。以下是一些策略，从最简单到最复杂： 方法一：使用start &#x2F;min (最简单，但可能无法完全隐藏) 这是最简单的方法，它将CMD窗口最小化到系统托盘。  但有些情况下，窗口仍然会在任务栏短暂出现。 将你的批处理文件的第一行修改为： 1start &#x2F;min &quot;&quot; &quot;python&amp;quo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="background cmd">
+<meta property="og:url" content="http://example.com/2025/09/21/background-cmd/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="要隐藏或最小化CMD窗口，需要使用不同的方法，取决于你的操作系统和Python环境。以下是一些策略，从最简单到最复杂： 方法一：使用start &#x2F;min (最简单，但可能无法完全隐藏) 这是最简单的方法，它将CMD窗口最小化到系统托盘。  但有些情况下，窗口仍然会在任务栏短暂出现。 将你的批处理文件的第一行修改为： 1start &#x2F;min &quot;&quot; &quot;python&amp;quo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-09-21T02:11:57.000Z">
+<meta property="article:modified_time" content="2025-09-21T02:28:53.009Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-background-cmd" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/21/background-cmd/" class="article-date">
+  <time class="dt-published" datetime="2025-09-21T02:11:57.000Z" itemprop="datePublished">2025-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      background cmd
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>要隐藏或最小化CMD窗口，需要使用不同的方法，取决于你的操作系统和Python环境。以下是一些策略，从最简单到最复杂：</p>
+<p><strong>方法一：使用<code>start /min</code> (最简单，但可能无法完全隐藏)</strong></p>
+<p>这是最简单的方法，它将CMD窗口最小化到系统托盘。  但有些情况下，窗口仍然会在任务栏短暂出现。</p>
+<p>将你的批处理文件的第一行修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start /min &quot;&quot; &quot;python&quot; -m http.server 8080</span><br></pre></td></tr></table></figure>
+
+<p>这里<code>&quot;&quot;</code>  是窗口标题，留空即可。  <code>start /min</code> 命令告诉系统以最小化窗口的方式启动程序。  需要注意的是，这并不能完全隐藏窗口，只是将其最小化。</p>
+<p><strong>方法二：使用<code>start /b</code> (更彻底隐藏，但可能导致问题)</strong></p>
+<p><code>start /b</code> 命令在后台启动程序，不创建新的窗口。 然而，这可能会导致一些问题，例如：如果Python脚本出现错误，你将不会看到任何错误信息。</p>
+<p>修改你的批处理文件为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">title Local Server</span><br><span class="line">cd /d %~dp0</span><br><span class="line">python -m http.server 8080</span><br></pre></td></tr></table></figure>
+
+<p>然后，在你的CMD或PowerShell中运行这个批处理文件，而不是双击它。</p>
+<p><strong>方法三：创建服务 (最复杂，但最稳定)</strong></p>
+<p>这是最复杂但最可靠的方法。  它将你的Python服务器注册为Windows服务，这样它会在后台运行，而无需任何用户交互或可见的窗口。  这需要一些额外的步骤，而且需要对Windows服务有一定的了解。</p>
+<p>你需要使用一个工具来创建服务，例如<code>nssm</code> (Non-Sucking Service Manager)。  你需要下载<code>nssm</code>，然后使用以下命令来安装你的Python服务器为服务（替换成你的Python路径）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nssm install MyPythonServer &quot;C:\Python39\python.exe&quot; -m http.server 8080</span><br></pre></td></tr></table></figure>
+
+<p>然后，你可以使用<code>nssm start MyPythonServer</code>启动服务，<code>nssm stop MyPythonServer</code>停止服务，<code>nssm remove MyPythonServer</code>删除服务。  这需要你对Windows服务管理有所了解。</p>
+<p><strong>方法四：使用Python的子进程库 (需要修改Python代码)</strong></p>
+<p>你可以修改你的Python代码，使用<code>subprocess</code>库在后台运行HTTP服务器。  这避免了使用批处理文件，并提供了更好的控制。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">process = subprocess.Popen([<span class="string">&#x27;python&#x27;</span>, <span class="string">&#x27;-m&#x27;</span>, <span class="string">&#x27;http.server&#x27;</span>, <span class="string">&#x27;8080&#x27;</span>], creationflags=subprocess.CREATE_NO_WINDOW)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ...你的其他代码...</span></span><br><span class="line"></span><br><span class="line">process.kill() <span class="comment"># 在需要时结束进程</span></span><br></pre></td></tr></table></figure>
+
+<p><code>subprocess.CREATE_NO_WINDOW</code> 标记会阻止创建新的CMD窗口。</p>
+<p><strong>选择哪种方法？</strong></p>
+<ul>
+<li><strong>对于简单的测试和快速启动:</strong> 方法一或二足够了。  方法一更用户友好，方法二更彻底隐藏，但风险也更高。</li>
+<li><strong>对于长期运行的服务器或生产环境:</strong>  方法三是最好的选择，因为它提供最稳定的后台运行方式。</li>
+<li><strong>如果想完全在Python中控制:</strong> 方法四是最好的选择，因为它提供了最大的灵活性和控制。</li>
+</ul>
+<p>记住，在生产环境中运行HTTP服务器，建议使用专业的Web服务器软件（如Apache或Nginx），而不是Python的<code>http.server</code>模块，因为它在安全性、性能和稳定性方面存在不足。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/21/background-cmd/" data-id="cmfwmi33w000b14d53ayy3hqk" data-title="background cmd" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/09/21/AI-news/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AI news
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/09/20/background-cmd-orders/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">background cmd orders</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/commercial/" rel="tag">commercial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/culture/" rel="tag">culture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/society/" rel="tag">society</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/commercial/" style="font-size: 10px;">commercial</a> <a href="/tags/culture/" style="font-size: 13.33px;">culture</a> <a href="/tags/daily/" style="font-size: 10px;">daily</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/society/" style="font-size: 16.67px;">society</a> <a href="/tags/tec/" style="font-size: 20px;">tec</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/09/">September 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/09/23/wocao-how-stupid/">wocao how stupid</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/22/the-absurd-truth-of-China-Economy/">the absurd truth of China Economy</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/21/AI-news/">AI news</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/21/background-cmd/">background cmd</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/20/background-cmd-orders/">background cmd orders</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
