@@ -71,6 +71,75 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-background-cmd" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/21/background-cmd/" class="article-date">
+  <time class="dt-published" datetime="2025-09-21T02:11:57.000Z" itemprop="datePublished">2025-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/21/background-cmd/">background cmd</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>要隐藏或最小化CMD窗口，需要使用不同的方法，取决于你的操作系统和Python环境。以下是一些策略，从最简单到最复杂：</p>
+<p><strong>方法一：使用<code>start /min</code> (最简单，但可能无法完全隐藏)</strong></p>
+<p>这是最简单的方法，它将CMD窗口最小化到系统托盘。  但有些情况下，窗口仍然会在任务栏短暂出现。</p>
+<p>将你的批处理文件的第一行修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start /min &quot;&quot; &quot;python&quot; -m http.server 8080</span><br></pre></td></tr></table></figure>
+
+<p>这里<code>&quot;&quot;</code>  是窗口标题，留空即可。  <code>start /min</code> 命令告诉系统以最小化窗口的方式启动程序。  需要注意的是，这并不能完全隐藏窗口，只是将其最小化。</p>
+<p><strong>方法二：使用<code>start /b</code> (更彻底隐藏，但可能导致问题)</strong></p>
+<p><code>start /b</code> 命令在后台启动程序，不创建新的窗口。 然而，这可能会导致一些问题，例如：如果Python脚本出现错误，你将不会看到任何错误信息。</p>
+<p>修改你的批处理文件为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">title Local Server</span><br><span class="line">cd /d %~dp0</span><br><span class="line">python -m http.server 8080</span><br></pre></td></tr></table></figure>
+
+<p>然后，在你的CMD或PowerShell中运行这个批处理文件，而不是双击它。</p>
+<p><strong>方法三：创建服务 (最复杂，但最稳定)</strong></p>
+<p>这是最复杂但最可靠的方法。  它将你的Python服务器注册为Windows服务，这样它会在后台运行，而无需任何用户交互或可见的窗口。  这需要一些额外的步骤，而且需要对Windows服务有一定的了解。</p>
+<p>你需要使用一个工具来创建服务，例如<code>nssm</code> (Non-Sucking Service Manager)。  你需要下载<code>nssm</code>，然后使用以下命令来安装你的Python服务器为服务（替换成你的Python路径）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nssm install MyPythonServer &quot;C:\Python39\python.exe&quot; -m http.server 8080</span><br></pre></td></tr></table></figure>
+
+<p>然后，你可以使用<code>nssm start MyPythonServer</code>启动服务，<code>nssm stop MyPythonServer</code>停止服务，<code>nssm remove MyPythonServer</code>删除服务。  这需要你对Windows服务管理有所了解。</p>
+<p><strong>方法四：使用Python的子进程库 (需要修改Python代码)</strong></p>
+<p>你可以修改你的Python代码，使用<code>subprocess</code>库在后台运行HTTP服务器。  这避免了使用批处理文件，并提供了更好的控制。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">process = subprocess.Popen([<span class="string">&#x27;python&#x27;</span>, <span class="string">&#x27;-m&#x27;</span>, <span class="string">&#x27;http.server&#x27;</span>, <span class="string">&#x27;8080&#x27;</span>], creationflags=subprocess.CREATE_NO_WINDOW)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ...你的其他代码...</span></span><br><span class="line"></span><br><span class="line">process.kill() <span class="comment"># 在需要时结束进程</span></span><br></pre></td></tr></table></figure>
+
+<p><code>subprocess.CREATE_NO_WINDOW</code> 标记会阻止创建新的CMD窗口。</p>
+<p><strong>选择哪种方法？</strong></p>
+<ul>
+<li><strong>对于简单的测试和快速启动:</strong> 方法一或二足够了。  方法一更用户友好，方法二更彻底隐藏，但风险也更高。</li>
+<li><strong>对于长期运行的服务器或生产环境:</strong>  方法三是最好的选择，因为它提供最稳定的后台运行方式。</li>
+<li><strong>如果想完全在Python中控制:</strong> 方法四是最好的选择，因为它提供了最大的灵活性和控制。</li>
+</ul>
+<p>记住，在生产环境中运行HTTP服务器，建议使用专业的Web服务器软件（如Apache或Nginx），而不是Python的<code>http.server</code>模块，因为它在安全性、性能和稳定性方面存在不足。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/21/background-cmd/" data-id="cmfwmi33w000b14d53ayy3hqk" data-title="background cmd" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-background-cmd-orders" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/20/background-cmd-orders/" class="article-date">
@@ -582,68 +651,6 @@
 
 
   
-    <article id="post-GitHub-limited-Capacity" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/17/GitHub-limited-Capacity/" class="article-date">
-  <time class="dt-published" datetime="2025-09-16T22:45:50.053Z" itemprop="datePublished">2025-09-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/17/GitHub-limited-Capacity/">GitHub limited Capacity</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>参考 <a target="_blank" rel="noopener" href="https://docs.github.com/zh/repositories/creating-and-managing-repositories/repository-limits">https://docs.github.com/zh/repositories/creating-and-managing-repositories/repository-limits</a></p>
-<h1 id="GitHub-仓库与文件大小限制说明"><a href="#GitHub-仓库与文件大小限制说明" class="headerlink" title="GitHub 仓库与文件大小限制说明"></a>GitHub 仓库与文件大小限制说明</h1><p>为确保平台性能与可靠性，GitHub 对仓库和文件设置了特定的大小限制。这些限制对于维护平台基础设施稳定及保障用户体验至关重要。</p>
-<h2 id="一、文件大小限制"><a href="#一、文件大小限制" class="headerlink" title="一、文件大小限制"></a>一、文件大小限制</h2><ul>
-<li><strong>超过 50 MB 的文件</strong>：当你尝试添加或更新超过 50 MB 的文件时，GitHub 会发出警告。尽管推送操作仍可成功，但建议移除此类文件，以避免引发性能问题。</li>
-<li><strong>超过 100 MB 的文件</strong>：GitHub 会阻止上传超过 100 MB 的文件。若需管理此类文件，必须使用 Git 大文件存储（Git Large File Storage，简称 Git LFS）。</li>
-<li><strong>浏览器上传限制</strong>：通过 GitHub 网页界面添加的文件，大小不能超过 25 MB。</li>
-</ul>
-<h2 id="二、仓库大小限制"><a href="#二、仓库大小限制" class="headerlink" title="二、仓库大小限制"></a>二、仓库大小限制</h2><ul>
-<li><strong>建议大小</strong>：仓库理想情况下应保持在 1 GB 以内，且强烈建议不超过 5 GB。</li>
-<li><strong>超出限制的处理</strong>：若某个仓库对 GitHub 基础设施造成显著影响，你可能会收到 GitHub 支持团队的通知，要求采取整改措施。</li>
-</ul>
-<h2 id="三、大文件管理方法"><a href="#三、大文件管理方法" class="headerlink" title="三、大文件管理方法"></a>三、大文件管理方法</h2><ol>
-<li>使用 Git LFS 跟踪大文件，避免导致仓库体积膨胀<sup>1,2</sup>。</li>
-<li>若需分发大型二进制文件，可在 GitHub 上创建“发布版本”（Releases）。每个发布版本中的单个文件最大可支持 2 GB<sup>1</sup>。</li>
-<li>避免使用 Git 存储大型 SQL 文件或备份文件。此类文件应改用文件共享服务或专门的备份工具<sup>1</sup>。</li>
-</ol>
-<h2 id="四、减小仓库体积的方法"><a href="#四、减小仓库体积的方法" class="headerlink" title="四、减小仓库体积的方法"></a>四、减小仓库体积的方法</h2><ol>
-<li>使用 <code>git rm</code> 命令删除不必要的文件，并通过修改提交（amend commits）清理提交历史<sup>1</sup>。</li>
-<li>执行 <code>git gc</code> 命令压缩 Git 对象，优化存储占用<sup>2</sup>。</li>
-<li>使用 <code>git-sizer</code> 等工具分析仓库大小，定位导致体积过大的问题区域<sup>1,2</sup>。</li>
-</ol>
-<p>遵循上述指南，你可以有效管理 GitHub 仓库，确保其性能达到最佳状态，同时符合平台的大小限制要求。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/17/GitHub-limited-Capacity/" data-id="cmfwmi33r000514d5a6778883" data-title="GitHub limited Capacity" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -672,7 +679,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/commercial/" style="font-size: 10px;">commercial</a> <a href="/tags/culture/" style="font-size: 15px;">culture</a> <a href="/tags/daily/" style="font-size: 10px;">daily</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/society/" style="font-size: 20px;">society</a> <a href="/tags/tec/" style="font-size: 20px;">tec</a> <a href="/tags/wealth/" style="font-size: 15px;">wealth</a> <a href="/tags/wealthy/" style="font-size: 10px;">wealthy</a>
+      <a href="/tags/commercial/" style="font-size: 10px;">commercial</a> <a href="/tags/culture/" style="font-size: 13.33px;">culture</a> <a href="/tags/daily/" style="font-size: 10px;">daily</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/society/" style="font-size: 20px;">society</a> <a href="/tags/tec/" style="font-size: 20px;">tec</a> <a href="/tags/wealth/" style="font-size: 16.67px;">wealth</a> <a href="/tags/wealthy/" style="font-size: 10px;">wealthy</a>
     </div>
   </div>
 
@@ -694,6 +701,10 @@
       <ul>
         
           <li>
+            <a href="/2025/09/26/RUN-away-the-order-of-Work-to-Die/">RUN away the order of Work to Die</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/26/Why-do-Chinese-people-rarely-use-the-method-of-buying-borrowing-and-dying/">Why do Chinese people rarely use the method of buying, borrowing, and dying?</a>
           </li>
         
@@ -707,10 +718,6 @@
         
           <li>
             <a href="/2025/09/25/anout-wealth-in-US/">anout wealth in US</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/25/how-to-win/">how to win</a>
           </li>
         
       </ul>
