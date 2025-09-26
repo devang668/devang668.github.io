@@ -71,6 +71,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-when-facing-terrible" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/19/when-facing-terrible/" class="article-date">
+  <time class="dt-published" datetime="2025-09-19T10:00:17.000Z" itemprop="datePublished">2025-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/19/when-facing-terrible/">当你面对贪婪和恐惧所做的麻痹</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p> 到后面，就想多做，但是时间，能力不支持，就会幻想能做很多，然后设下不和实际的目标，违背现实，幻想，沮丧，麻痹，逃避。</p>
+<p>后期可能会感到慌张和失落，然后，刷手机，麻痹自己，感觉到一点的精神振奋和快感。</p>
+<p>但是故事并非无解。</p>
+<p>多设计一些截至期限，然后多次检测，多次奖励，就会让最终的结果好看。不至于太难受。</p>
+<p>这是去年在马来西亚拍摄的。</p>
+<img src="/2025/09/19/when-facing-terrible/image-20250919192754454.png" alt="image-20250919192754454" />
+
+<p>这是png图片</p>
+<img src="/2025/09/19/when-facing-terrible/picture_1728901424541-1758281176828-7.png" alt="picture_1728901424541" />
+
+<p>jpg</p>
+<img src="/2025/09/19/when-facing-terrible/picture_1728901424541-1758278465232-4.jpg" alt="picture_1728901424541" />
+
+
+
+<img src="/2025/09/19/when-facing-terrible/picture_1728901432722.jpg" alt="picture_1728901432722" />
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/19/when-facing-terrible/" data-id="cmfwmi354001n14d5fkhuaik8" data-title="当你面对贪婪和恐惧所做的麻痹" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/society/" rel="tag">society</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-wow-I-created-a-new-one" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/19/wow-I-created-a-new-one/" class="article-date">
@@ -571,68 +628,6 @@
 
 
   
-    <article id="post-where-is-my-python" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/13/where-is-my-python/" class="article-date">
-  <time class="dt-published" datetime="2025-09-13T02:01:42.000Z" itemprop="datePublished">2025-09-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/13/where-is-my-python/">where is my python</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>当然，自己的电脑上有好多个python.exe, 但是哪一个才是常被默认使用的ne？</p>
-<p>使用 cmd 命令行实现查找<br>where python<br>python -V</p>
-<p>不过这是骗你的<br>真实的干活的路径包在这里<br>C:\Users\Administrator\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311</p>
-<p>用它！</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -c &quot;import sys,os,pathlib; print(sys.executable)&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>得到真实的干活的，包的位置！</p>
-<p>查看这里的包，方便后面迁移</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import subprocess, sys</span><br><span class="line"># 让 pip 自己找“用户级”site-packages</span><br><span class="line">&gt;&gt;&gt; subprocess.run([sys.executable, &#x27;-m&#x27;, &#x27;pip&#x27;, &#x27;list&#x27;, &#x27;--user&#x27;, &#x27;-v&#x27;])</span><br></pre></td></tr></table></figure>
-
-<h2 id="还有"><a href="#还有" class="headerlink" title="还有"></a>还有</h2><p>使用everything 找 python.exe</p>
-<p>打开cmd 拖动这个python.exe到黑色窗口，然后</p>
-<pre><code>&gt;&gt;&gt; import sys, platform
-&gt;&gt;&gt; print(&quot;解释器路径:&quot;, sys.executable)
-&gt;&gt;&gt; print(&quot;版本字符串:&quot;, platform.python_version())
-
-
-
-可以知道他的版本，决定是否要用。
-
-左下角放大镜 输入 环境变量 进行编辑 在系统变量里path 新建python的并且上移最顶端。
-或者 win + R  输入`rundll32 sysdm.cpl,EditEnvironmentVariables`
-</code></pre>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/13/where-is-my-python/" data-id="cmfwmi356001p14d5hfdg3fg0" data-title="where is my python" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -651,7 +646,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/commercial/" rel="tag">commercial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/culture/" rel="tag">culture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/society/" rel="tag">society</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/commercial/" rel="tag">commercial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/culture/" rel="tag">culture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/society/" rel="tag">society</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tec/" rel="tag">tec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wealth/" rel="tag">wealth</a></li></ul>
     </div>
   </div>
 
@@ -661,7 +656,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/commercial/" style="font-size: 10px;">commercial</a> <a href="/tags/culture/" style="font-size: 13.33px;">culture</a> <a href="/tags/daily/" style="font-size: 10px;">daily</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/society/" style="font-size: 16.67px;">society</a> <a href="/tags/tec/" style="font-size: 20px;">tec</a>
+      <a href="/tags/commercial/" style="font-size: 10px;">commercial</a> <a href="/tags/culture/" style="font-size: 13.33px;">culture</a> <a href="/tags/daily/" style="font-size: 10px;">daily</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/society/" style="font-size: 16.67px;">society</a> <a href="/tags/tec/" style="font-size: 20px;">tec</a> <a href="/tags/wealth/" style="font-size: 10px;">wealth</a>
     </div>
   </div>
 
@@ -683,6 +678,10 @@
       <ul>
         
           <li>
+            <a href="/2025/09/25/anout-wealth-in-US/">anout wealth in US</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/25/how-to-win/">how to win</a>
           </li>
         
@@ -696,10 +695,6 @@
         
           <li>
             <a href="/2025/09/22/the-absurd-truth-of-China-Economy/">the absurd truth of China Economy</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/21/AI-news/">AI news</a>
           </li>
         
       </ul>
