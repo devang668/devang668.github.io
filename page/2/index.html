@@ -71,6 +71,153 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-background-cmd-orders" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/20/background-cmd-orders/" class="article-date">
+  <time class="dt-published" datetime="2025-09-20T12:45:08.000Z" itemprop="datePublished">2025-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/20/background-cmd-orders/">background cmd orders</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>nssm是一个服务封装程序，它可以将普通exe程序封装成服务，实现开机自启动，同类型的工具还有微软自己的srvany，不过nssm更加简单易用，并且功能强大。</p>
+<p>它的特点如下：</p>
+<p>支持普通exe程序（控制台程序或者带界面的Windows程序都可以）<br>安装简单，修改方便<br>可以自动守护封装了的服务，程序挂掉了后可以自动重启<br>官网地址：<a target="_blank" rel="noopener" href="https://nssm.cc/">https://nssm.cc/</a></p>
+<h3 id="打开命令行，运行nssm程序"><a href="#打开命令行，运行nssm程序" class="headerlink" title="打开命令行，运行nssm程序"></a>打开命令行，运行nssm程序</h3><p>管理员权限打开命令行工具，切换到nssm.exe所在路径，运行 nssm install，打开程序配置界面</p>
+<h3 id="配置项说明："><a href="#配置项说明：" class="headerlink" title="配置项说明："></a>配置项说明：</h3><p>Path：运行应用程序的程序</p>
+<p>Startup directory：应用程序所在的目录</p>
+<p>Arguments：应用运行的参数</p>
+<p>Service name：生成服务的名称</p>
+<p>最后点击install service 完成windows服务安装，在windows服务列表就能看到创建的服务了。</p>
+<h2 id="开机自己启动"><a href="#开机自己启动" class="headerlink" title="开机自己启动"></a>开机自己启动</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">nssm set SubsCheckService Start SERVICE_AUTO_START</span><br><span class="line">sc config SubsCheckService start= auto</span><br><span class="line">echo 服务已设为开机自启。</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+
+
+<p>先要把nssm.exe 复制到 C:\Windows\System32</p>
+<h3 id="检验"><a href="#检验" class="headerlink" title="检验"></a>检验</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc qc SubsCheckService | findstr &quot;START_TYPE&quot;</span><br></pre></td></tr></table></figure>
+
+<img src="/2025/09/20/background-cmd-orders/image-20250920212140851.png" alt="image-20250920212140851" />
+
+<p>我的返回</p>
+<img src="/2025/09/20/background-cmd-orders/image-20250920212222167.png" alt="image-20250920212222167" />
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/20/background-cmd-orders/" data-id="cmfwmi33u000914d5h1p74l7m" data-title="background cmd orders" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-employee-seek-on-0920" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/20/employee-seek-on-0920/" class="article-date">
+  <time class="dt-published" datetime="2025-09-20T08:08:17.000Z" itemprop="datePublished">2025-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/20/employee-seek-on-0920/">employee seek on 0920</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天去参加招聘会了，做的总结如下</p>
+<p><a target="_blank" rel="noopener" href="https://flowus.cn/df00e666-3e9a-4d24-8ec0-406328a4c858">flowus</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/20/employee-seek-on-0920/" data-id="cmfwmi348000l14d56v0u29gc" data-title="employee seek on 0920" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/society/" rel="tag">society</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-how-to-earn-from-googleADs" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/19/how-to-earn-from-googleADs/" class="article-date">
+  <time class="dt-published" datetime="2025-09-19T10:57:00.000Z" itemprop="datePublished">2025-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/19/how-to-earn-from-googleADs/">how to earn from googleADs</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="https://youtu.be/zSuEPMbgaNU?si=4ebsWDj3iSJqffXK">这个讲了博主自己搭建在线工具赚取服务广告费</a></p>
+<p>这是博主推荐的一款工具</p>
+<img src="/2025/09/19/how-to-earn-from-googleADs/image-20250919203241885.png" alt="image-20250919203241885" />
+
+<p>没有征兆的，不知道什么时候就有图片没渲染成功，只能是使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s </span><br></pre></td></tr></table></figure>
+<p>每次先预览了，没问题就推送。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/19/how-to-earn-from-googleADs/" data-id="cmfwmi34g000s14d5449p7st3" data-title="how to earn from googleADs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-when-facing-terrible" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/19/when-facing-terrible/" class="article-date">
@@ -497,142 +644,11 @@
 
 
   
-    <article id="post-low-cost-services-2-developers" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/17/low-cost-services-2-developers/" class="article-date">
-  <time class="dt-published" datetime="2025-09-16T22:03:29.345Z" itemprop="datePublished">2025-09-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/17/low-cost-services-2-developers/">low cost usage</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="1-想要免费的vp呢服务节点？可以使用worker-加上自己的域名"><a href="#1-想要免费的vp呢服务节点？可以使用worker-加上自己的域名" class="headerlink" title="1- 想要免费的vp呢服务节点？可以使用worker 加上自己的域名"></a>1- 想要免费的vp呢服务节点？可以使用worker 加上自己的域名</h2><h2 id="2-免费的容器哪里有，主要是docker"><a href="#2-免费的容器哪里有，主要是docker" class="headerlink" title="2-免费的容器哪里有，主要是docker"></a>2-免费的容器哪里有，主要是docker</h2><p>参考 <a target="_blank" rel="noopener" href="https://linux.do/t/topic/174075/59">https://linux.do/t/topic/174075/59</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">1、Northflank</span><br><span class="line">可以部署2个Docker容器</span><br><span class="line">不会休眠</span><br><span class="line">需要绑卡</span><br><span class="line"></span><br><span class="line">2、Patr</span><br><span class="line">可以部署1个Docker容器</span><br><span class="line">不会休眠</span><br><span class="line">资源紧张 可能分配不到容器</span><br><span class="line"></span><br><span class="line">3、 Render</span><br><span class="line">可以免费部署N个Docker容器</span><br><span class="line">所有容器启用时间 750小时/月</span><br><span class="line">会休眠</span><br><span class="line">需要绑卡</span><br><span class="line"></span><br><span class="line">4、Glitch</span><br><span class="line">可以免费部署N个Docker容器</span><br><span class="line">所有容器启用时间 1000小时/月</span><br><span class="line">会休眠</span><br><span class="line"></span><br><span class="line">5、Vercel</span><br><span class="line">适合部署静态网站</span><br><span class="line">也可以部署api</span><br><span class="line">总流量 100G/月</span><br><span class="line">不会休眠</span><br><span class="line"></span><br><span class="line">6、Back4app</span><br><span class="line">可以免费部署1个Docker容器</span><br><span class="line">容器启用时间 600小时/月</span><br><span class="line"></span><br><span class="line">以上都是自带域名，也可以使用自有域名</span><br><span class="line"></span><br><span class="line">其他的欢迎佬友补充</span><br><span class="line"></span><br><span class="line">以下是佬友补充</span><br><span class="line">1、zeabur</span><br><span class="line">适合部署静态网站和云函数</span><br><span class="line">不会休眠</span><br><span class="line"></span><br><span class="line">2、railway</span><br><span class="line">免费5美元使用额度</span><br><span class="line"></span><br><span class="line">3、koyeb</span><br><span class="line">可以免费部署一个web服务</span><br><span class="line"></span><br><span class="line">4、netlify</span><br><span class="line">适合部署静态网站和云函数</span><br><span class="line">总流量 100G/月</span><br><span class="line">不会休眠</span><br><span class="line"></span><br><span class="line">重要</span><br><span class="line">所有服务不可滥用</span><br><span class="line">诸如 搭建节点、挖矿、长时间占用CPU等</span><br><span class="line">均会被封号</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="3-开源的网站监控和数据推送服务"><a href="#3-开源的网站监控和数据推送服务" class="headerlink" title="3-开源的网站监控和数据推送服务"></a>3-开源的网站监控和数据推送服务</h2><p>WebMonitor<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1905008134990313279">https://zhuanlan.zhihu.com/p/1905008134990313279</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/wbsu2004/article/details/119748224">https://blog.csdn.net/wbsu2004/article/details/119748224</a></p>
-<h2 id="4"><a href="#4" class="headerlink" title="4-"></a>4-</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/17/low-cost-services-2-developers/" data-id="cmfwmi34i000v14d56nqe3zso" data-title="low cost usage" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-e-卖奖牌-哈哈哈" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/14/e-%E5%8D%96%E5%A5%96%E7%89%8C-%E5%93%88%E5%93%88%E5%93%88/" class="article-date">
-  <time class="dt-published" datetime="2025-09-14T11:20:21.000Z" itemprop="datePublished">2025-09-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/14/e-%E5%8D%96%E5%A5%96%E7%89%8C-%E5%93%88%E5%93%88%E5%93%88/">e-卖奖牌 哈哈哈</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>【卖奖牌挣5亿，keep赢麻了？健身软件是怎么收割年轻人的？<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17s4y1h7ne/">https://www.bilibili.com/video/BV17s4y1h7ne/</a></p>
-<p>1.易获得-自由选跑步距离</p>
-<p>2.审美向盲盒靠拢，联名款、主题款</p>
-<p>3.社区晒奖牌，利用社交属性</p>
-<p>健身餐、健身装备都亏损，自律概念赚5个亿</p>
-<p>健身、反人性—大众、盈利化，矛盾</p>
-<p>赚钱就要顺应人的本能需求，不要低估人性的强度，也不要高估自己的能力<br>大家爱显摆，爱显摆，顺着更大的人性来做</p>
-<p>1.keep平台推出线上跑活动，吸引大量人群参加。</p>
-<p>2.用各种联名奖牌作为礼物</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/14/e-%E5%8D%96%E5%A5%96%E7%89%8C-%E5%93%88%E5%93%88%E5%93%88/" data-id="cmfwmi343000g14d5e7ww3pdo" data-title="e-卖奖牌 哈哈哈" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/society/" rel="tag">society</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-edit-with-Edge" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/14/edit-with-Edge/" class="article-date">
-  <time class="dt-published" datetime="2025-09-13T21:38:11.677Z" itemprop="datePublished">2025-09-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/14/edit-with-Edge/">New Post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>这是一篇在浏览器里面写的文章，之前都是在notepad或者Vscode 。<br>觉得还要再另外打开一个软件不方便，尤其是VScode 占用内存好高的。<br>这是使用python实现的</p>
-<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>很好，可以实现的</p>
-<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>也可以实现真不错<br>就是说，现在的遗憾就是上面的编辑功能按钮等是透明的这个有点让人觉得不好。<br>别的，似乎是没有什么大问题的呢。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/14/edit-with-Edge/" data-id="cmfwmi346000i14d55lg988uv" data-title="New Post" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -646,7 +662,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/commercial/" rel="tag">commercial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/culture/" rel="tag">culture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/society/" rel="tag">society</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tec/" rel="tag">tec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wealth/" rel="tag">wealth</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/commercial/" rel="tag">commercial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/culture/" rel="tag">culture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/society/" rel="tag">society</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tec/" rel="tag">tec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wealth/" rel="tag">wealth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wealthy/" rel="tag">wealthy</a></li></ul>
     </div>
   </div>
 
@@ -656,7 +672,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/commercial/" style="font-size: 10px;">commercial</a> <a href="/tags/culture/" style="font-size: 13.33px;">culture</a> <a href="/tags/daily/" style="font-size: 10px;">daily</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/society/" style="font-size: 16.67px;">society</a> <a href="/tags/tec/" style="font-size: 20px;">tec</a> <a href="/tags/wealth/" style="font-size: 10px;">wealth</a>
+      <a href="/tags/commercial/" style="font-size: 10px;">commercial</a> <a href="/tags/culture/" style="font-size: 15px;">culture</a> <a href="/tags/daily/" style="font-size: 10px;">daily</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/society/" style="font-size: 20px;">society</a> <a href="/tags/tec/" style="font-size: 20px;">tec</a> <a href="/tags/wealth/" style="font-size: 15px;">wealth</a> <a href="/tags/wealthy/" style="font-size: 10px;">wealthy</a>
     </div>
   </div>
 
@@ -678,23 +694,23 @@
       <ul>
         
           <li>
+            <a href="/2025/09/26/Why-do-Chinese-people-rarely-use-the-method-of-buying-borrowing-and-dying/">Why do Chinese people rarely use the method of buying, borrowing, and dying?</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/26/How-to-deal-with-high-tax-burden-and-low-welfare-life-in-mainland-China-with-low-society-protection/">How to deal with high tax burden and low welfare life in mainland China with low society protection</a>
+          </li>
+        
+          <li>
+            <a href="/2025/09/26/Regarding-taxation-matters/">Regarding taxation matters</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/25/anout-wealth-in-US/">anout wealth in US</a>
           </li>
         
           <li>
             <a href="/2025/09/25/how-to-win/">how to win</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/24/why-do-you-want-to-have-more-chileren/">why do you want to have more chileren</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/23/wocao-how-stupid/">wocao how stupid</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/22/the-absurd-truth-of-China-Economy/">the absurd truth of China Economy</a>
           </li>
         
       </ul>
