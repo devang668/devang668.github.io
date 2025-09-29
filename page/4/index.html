@@ -71,6 +71,85 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-about-html-listening" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/12/about-html-listening/" class="article-date">
+  <time class="dt-published" datetime="2025-09-12T13:06:12.000Z" itemprop="datePublished">2025-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/12/about-html-listening/">about html_listening</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>我又一个本地的任务需要总是又一个命令行窗口去监督-listenning</p>
+<p>其实就是有这种办法</p>
+<p>可以用于本地base64文件道德实时更新和订阅。</p>
+<p>我的测试结果显示，在后面使用记事本更新文件，前端浏览器刷新一下就出来了。<br>txt c文件都可以直接展示但是html-中文没有显示好。<br>1- </p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">title</span> Local VPN Subscription Server</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">REM 切换到当前脚本所在的目录</span></span><br><span class="line"><span class="built_in">cd</span> /d %~dp0</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">REM 使用Python启动一个HTTP服务器，端口号为 8080</span></span><br><span class="line"><span class="comment">REM 如果8080端口被占用，可以换成其他数字，例如 8000, 8888等</span></span><br><span class="line"><span class="built_in">echo</span> Starting local server <span class="built_in">at</span> http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">8080</span></span><br><span class="line">python -m http.server <span class="number">8080</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试服务器</p>
+<p>双击运行你刚刚创建的 start_server.bat 文件。</p>
+<p>你会看到一个黑色的命令行窗口，显示 “Starting local server…” 或类似 “Serving HTTP on 0.0.0.0 port 8080” 的信息。不要关闭这个窗口，最小化即可。</p>
+<p>打开你的浏览器，访问 <a target="_blank" rel="noopener" href="http://127.0.0.1:8080/test_base64.txt%E3%80%82">http://127.0.0.1:8080/test_base64.txt。</a></p>
+<p>如果浏览器能够显示或下载&#x2F; 显示 你的 txt 文件的内容（那一长串Base64字符串），说明本地服务器已经成功运行！</p>
+<p>实现开机自启动（全自动化的关键）<br>为了不用每次开机都手动去双击 start_server.bat，我们需要让它随系统自动在后台启动。</p>
+<p>创建后台运行脚本（可选但推荐，可以避免开机时弹出黑框）</p>
+<p>在 D:\VPN 文件夹下，再新建一个文本文档。</p>
+<p>将其重命名为 run_background.vbs。</p>
+<p>用记事本编辑它，并粘贴以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set ws = CreateObject(&quot;Wscript.Shell&quot;)</span><br><span class="line">ws.run &quot;D:\V\start_server.bat /start&quot;, 0</span><br></pre></td></tr></table></figure>
+
+<p>注意： 请将代码中的 D:\VPN\start_server.bat 替换成你自己存放 .bat 文件的实际路径。</p>
+<p>保存文件。这个 .vbs 脚本的作用就是不弹出黑框、在后台静默运行我们的服务器脚本。</p>
+<p>设置任务计划程序</p>
+<p>按下 Win + R，输入 taskschd.msc，然后回车，打开“任务计划程序”。</p>
+<p>在右侧“操作”栏中，点击“创建基本任务”。</p>
+<p>名称：随便填写，如 V2rayN Local Server。</p>
+<p>触发器：选择 “当前用户登录时” 或 “计算机启动时”。前者更常用。</p>
+<p>操作：选择 “启动程序”。</p>
+<p>程序或脚本：点击“浏览”，找到并选择我们刚刚创建的 run_background.vbs 脚本 (如果你想看到黑框，也可以直接选择 start_server.bat)。</p>
+<p>点击“下一步”，然后点击“完成”。</p>
+<p>最终效果<br>现在，整个自动化流程已经搭建完毕：</p>
+<p>您开机或登录Windows后，任务计划程序会自动在后台无窗口地运行本地Web服务器。</p>
+<p>当您打开V2rayN时（或者V2rayN随开机自启时），它会根据设置，自动从 <a target="_blank" rel="noopener" href="http://127.0.0.1:8080/v.txt">http://127.0.0.1:8080/v.txt</a> 这个地址检查更新。</p>
+<p>由于这个地址指向的就是您本地每日更新的文件，V2总能获取到最新的节点信息。</p>
+<p>但是这并不是完美的</p>
+<ul>
+<li><p>这一个不用写文本路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 获取当前VBScript文件的完整路径</span><br><span class="line">strScriptPath = WScript.ScriptFullName</span><br><span class="line"></span><br><span class="line">&#x27; 提取路径中的目录部分（去掉文件名）</span><br><span class="line">Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)</span><br><span class="line">strScriptDir = objFSO.GetParentFolderName(strScriptPath)</span><br><span class="line"></span><br><span class="line">&#x27; 拼接同目录下的bat文件路径</span><br><span class="line">strBatPath = objFSO.BuildPath(strScriptDir, &quot;start_server.bat&quot;)</span><br><span class="line"></span><br><span class="line">&#x27; 运行bat文件（隐藏窗口）</span><br><span class="line">Set ws = CreateObject(&quot;Wscript.Shell&quot;)</span><br><span class="line">ws.Run &quot;&quot;&quot;&quot; &amp; strBatPath &amp; &quot;&quot;&quot; /start&quot;, 0  &#x27; 双引号处理路径中的空格问题</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这个还可以确认操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 获取当前VBScript文件的完整路径</span><br><span class="line">strScriptPath = WScript.ScriptFullName</span><br><span class="line"></span><br><span class="line">&#x27; 提取路径中的目录部分</span><br><span class="line">Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)</span><br><span class="line">strScriptDir = objFSO.GetParentFolderName(strScriptPath)</span><br><span class="line"></span><br><span class="line">&#x27; 拼接同目录下的bat文件路径（这里使用你的bat文件名1.bat）</span><br><span class="line">strBatPath = objFSO.BuildPath(strScriptDir, &quot;1.bat&quot;)</span><br><span class="line"></span><br><span class="line">&#x27; 运行bat文件（显示窗口以便查看，等待执行完成）</span><br><span class="line">Set ws = CreateObject(&quot;Wscript.Shell&quot;)</span><br><span class="line">returnCode = ws.run(&quot;D:\7zip\a.minitools\vpn\SubsCheck_Win_GUI\output\1.bat /start&quot;, 0)</span><br><span class="line"></span><br><span class="line">&#x27; 弹出提示窗口，3秒后自动关闭，让你有时间确认结果</span><br><span class="line">ws.Popup &quot;操作已完成，3秒后自动退出...&quot;, 3, &quot;提示&quot;, 0 &#x27; 0表示只有&quot;确定&quot;按钮</span><br><span class="line"></span><br><span class="line">&#x27; 自动退出脚本</span><br><span class="line">WScript.Quit returnCode</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/12/about-html-listening/" data-id="cmfwmi33s000614d59wx231nw" data-title="about html_listening" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-code-of-hexo-helpper" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/12/code-of-hexo-helpper/" class="article-date">
@@ -751,56 +830,6 @@ int main()
 
 
   
-    <article id="post-my-6th-post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/10/my-6th-post/" class="article-date">
-  <time class="dt-published" datetime="2025-09-10T01:14:19.000Z" itemprop="datePublished">2025-09-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/10/my-6th-post/">my 6th post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="在这里测试图片功能"><a href="#在这里测试图片功能" class="headerlink" title="在这里测试图片功能"></a>在这里测试图片功能</h2><p>这是一个图片</p>
-<p><img src="D:\ProgramData\git\blogs\source_posts\my-6th-post\giuseppe-famiani-npaEc3Zc-RI-unsplash.jpg" alt="giuseppe-famiani-npaEc3Zc-RI-unsplash"></p>
-<p>这是第二个</p>
-<p>从上文复制</p>
-<p><code>&lt;img src=&quot;/2025/09/10/my-6th-post/giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2.jpg&quot; alt=&quot;giuseppe-famiani-npaEc3Zc-RI-unsplash&quot; /&gt;</code></p>
-<img src="/2025/09/10/my-6th-post/giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2.jpg" alt="giuseppe-famiani-npaEc3Zc-RI-unsplash" />
-
-<p>从文件夹里复制：</p>
-<p><code>&lt;img src=&quot;/2025/09/10/my-6th-post/giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2.jpg&quot; alt=&quot;giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2&quot; /&gt;</code></p>
-<img src="/2025/09/10/my-6th-post/giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2.jpg" alt="giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2" />
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/10/my-6th-post/" data-id="cmfwmi34m001114d53mcggqe1" data-title="my 6th post" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -855,6 +884,10 @@ int main()
           </li>
         
           <li>
+            <a href="/2025/09/28/Cryptocurrency-Beginner%E2%80%98s-Tutorial/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2025/09/27/get-money-with-AI/">get money with AI</a>
           </li>
         
@@ -864,10 +897,6 @@ int main()
         
           <li>
             <a href="/2025/09/26/RUN-away-the-order-of-Work-to-Die/">RUN away the order of Work to Die</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/26/Why-do-Chinese-people-rarely-use-the-method-of-buying-borrowing-and-dying/">Why do Chinese people rarely use the method of buying, borrowing, and dying?</a>
           </li>
         
       </ul>
