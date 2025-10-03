@@ -71,6 +71,85 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-data-tracker-for-aids" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/10/03/data-tracker-for-aids/" class="article-date">
+  <time class="dt-published" datetime="2025-10-03T06:14:50.000Z" itemprop="datePublished">2025-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/10/03/data-tracker-for-aids/">data tracker for aids</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>你可以使用 Cloudflare Web Analytics 结合 UTM 参数来实现推广链接的追踪统计，从而了解不同位置的推广效果。具体方法如下：</p>
+<h3 id="启用-Cloudflare-Web-Analytics"><a href="#启用-Cloudflare-Web-Analytics" class="headerlink" title="启用 Cloudflare Web Analytics"></a>启用 Cloudflare Web Analytics</h3><ol>
+<li>登录 Cloudflare dashboard，选择你的账户。</li>
+<li>点击 “Analytics &amp; Logs” 下拉菜单，选择 “Web Analytics”。</li>
+<li>点击 “Add a Site”，输入你的网站主机名，然后选择出现的消息框中的主机名并点击 “Done”。</li>
+<li>如果你不想使用自动设置，可以展开 “Advanced Options”，选择 “Disable automatic setup”，然后复制提供的 JavaScript 代码片段。</li>
+<li>将复制的 JavaScript 代码片段添加到你网站的 HTML 页面的<code>&lt;/body&gt;</code>标签之前。</li>
+</ol>
+<h3 id="使用-UTM-参数标记推广链接"><a href="#使用-UTM-参数标记推广链接" class="headerlink" title="使用 UTM 参数标记推广链接"></a>使用 UTM 参数标记推广链接</h3><ol>
+<li><p>确定你要追踪的推广位置，例如不同的社交媒体平台、论坛、邮件等。</p>
+</li>
+<li><p>为每个推广位置的链接添加 UTM 参数。UTM 参数是添加到 URL 末尾的特殊参数，常见的参数包括：</p>
+<ul>
+<li><p><code>utm_source</code>：标识流量来源，如<code>sina</code>、<code>wechat</code>等。</p>
+</li>
+<li><p><code>utm_medium</code>：标识广告媒介，如<code>banner</code>、<code>social</code>、<code>email</code>等。</p>
+</li>
+<li><p><code>utm_campaign</code>：标识营销活动名称，如<code>double11_sale</code>、<code>new_product_launch</code>等。</p>
+</li>
+<li><pre><code>utm_content
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">：用于区分同一活动中的不同广告内容或位置，如</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+ad_button
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">、</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+sidebar_link
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">等。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">例如，你的网站链接是</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+https://www.example.com
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">，你要在微信上推广，对应的 UTM 链接可以是</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+https://www.example.com?utm_source=wechat&amp;utm_medium=social&amp;utm_campaign=wechat_promotion
+</code></pre>
+<p>。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="查看和分析数据"><a href="#查看和分析数据" class="headerlink" title="查看和分析数据"></a>查看和分析数据</h3><ol>
+<li>当用户点击带有 UTM 参数的推广链接访问你的网站后，Cloudflare Web Analytics 会收集相关数据。</li>
+<li>你可以在 Cloudflare dashboard 的 “Web Analytics” 界面查看数据，通过分析不同来源、媒介和活动的流量数据，了解哪个位置的推广效果更好，比如哪个平台带来的点击量更多、用户停留时间更长等。</li>
+</ol>
+<p>此外，你还可以结合 Google Analytics 等其他工具进行更详细的分析。如果你希望链接更简洁，也可以使用 Cloudflare Workers 创建自定义的短链接，并在短链接中嵌入 UTM 参数或其他追踪信息，同时利用 Workers Analytics 引擎来跟踪短链接的点击情况。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/10/03/data-tracker-for-aids/" data-id="cmgagcsr00000y0d5g33mghg8" data-title="data tracker for aids" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-low-risk-to-cry-coin" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/10/01/low-risk-to-cry-coin/" class="article-date">
@@ -1098,194 +1177,11 @@
 
 
   
-    <article id="post-How-to-deal-with-high-tax-burden-and-low-welfare-life-in-mainland-China-with-low-society-protection" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/26/How-to-deal-with-high-tax-burden-and-low-welfare-life-in-mainland-China-with-low-society-protection/" class="article-date">
-  <time class="dt-published" datetime="2025-09-26T06:39:01.000Z" itemprop="datePublished">2025-09-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/26/How-to-deal-with-high-tax-burden-and-low-welfare-life-in-mainland-China-with-low-society-protection/">How to deal with high tax burden and low welfare life in mainland China with low society protection</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>权益</p>
-<p>问</p>
-<blockquote>
-<p>国内的间接税好重，可是能够享用到的公共福利比欧洲少好多，目前法国的税收水准和中国接近，但是，人家那里的社会福利真的跟上了，巨大的压力，十分有限的保障，普通人怎么做，才可以更多的保护自己的利益。</p>
-</blockquote>
-<p>先给你一句“结论式安慰”——  </p>
-<blockquote>
-<p><strong>你不是一个人在觉得“税重、福利薄”；官方数据也证实，中国普通人承担的间接税痛感确实高于法国，而拿回来的公共服务占比又明显低于法国。</strong>  </p>
-</blockquote>
-<p>下面把“差距到底在哪、普通人还能怎么自保”拆开讲，再给你一张<strong>可立即照做的“个人防御清单”</strong>。</p>
-<hr>
-<h3 id="一、同样-46-的“宏观税负”，中法普通人感受为何天差地别？"><a href="#一、同样-46-的“宏观税负”，中法普通人感受为何天差地别？" class="headerlink" title="一、同样 46% 的“宏观税负”，中法普通人感受为何天差地别？"></a>一、同样 46% 的“宏观税负”，中法普通人感受为何天差地别？</h3><table>
-<thead>
-<tr>
-<th>项目</th>
-<th>法国</th>
-<th>中国</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>税收占 GDP</strong></td>
-<td>46% 左右</td>
-<td>45% 左右（含土地出让金等广义财政）</td>
-</tr>
-<tr>
-<td><strong>间接税占比</strong></td>
-<td>40%</td>
-<td>55% 以上（增值税+消费税≈48%，再加关税等）</td>
-</tr>
-<tr>
-<td><strong>福利支出占 GDP</strong></td>
-<td>26%~27%（医疗+养老+失业+住房）</td>
-<td>10% 左右（2022 社保+医疗财政支出合计占 GDP≈10%）</td>
-</tr>
-<tr>
-<td><strong>个税起征点&#x2F;累进性</strong></td>
-<td>家庭系数分摊，月入&lt;1.2 万 RMB 基本不交，45% 顶格针对超高收入</td>
-<td>起征点 5 000 RMB，无家庭系数，中产 10% 税率立即命中</td>
-</tr>
-<tr>
-<td><strong>看病自付比例</strong></td>
-<td>8.7%（其余国家医保+补充保险覆盖）</td>
-<td>35%~50% 自理（居民医保+大病保险后）</td>
-</tr>
-<tr>
-<td><strong>幼儿园到大学</strong></td>
-<td>国立学校学费≈0，餐补 1 欧</td>
-<td>公立虽便宜，但课外支出、学区房、伙食费家长自担</td>
-</tr>
-<tr>
-<td><strong>失业&#x2F;育儿现金</strong></td>
-<td>失业可领 24 个月，金额≈原工资 57%；育儿每月 100~400 欧</td>
-<td>失业金最多 24 个月，金额仅 40%~45% 且封顶 2 万&#x2F;年；育儿个税专项附加扣除每月仅 1 000 RMB</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>一句话：<br><strong>法国“高税”换来的是“生老病死”国家打包；中国“高税”更多体现在商品涨价，福利却主要靠个人自掏腰包，于是“税痛”更直接。</strong></p>
-</blockquote>
-<hr>
-<h3 id="二、普通人“打不过结构，但可以局部止损”的-7-条具体做法"><a href="#二、普通人“打不过结构，但可以局部止损”的-7-条具体做法" class="headerlink" title="二、普通人“打不过结构，但可以局部止损”的 7 条具体做法"></a>二、普通人“打不过结构，但可以局部止损”的 7 条具体做法</h3><h4 id="①-把“个人所得税”降到-10-以内"><a href="#①-把“个人所得税”降到-10-以内" class="headerlink" title="① 把“个人所得税”降到 10% 以内"></a>① 把“个人所得税”降到 10% 以内</h4><ul>
-<li>充分利用 <strong>7 项专项附加扣除</strong>（子女教育、房贷利息、租房、养老、大病、继续教育、婴幼儿照护）。<br><em>示例：</em> 月入 1.8 万，供房+两个娃+父母 60 岁，扣除后应纳税所得额可再少 4 000<del>5 000 RMB，年省税 2 000</del>3 000 元。  </li>
-<li>年终奖<strong>单独计税</strong>政策已延至 2027 年，让 HR 尽量把奖金拆成年终奖，而不是合并到工资。</li>
-</ul>
-<h4 id="②-让“医保-商业保险”替你扛-50-万以上的大病风险"><a href="#②-让“医保-商业保险”替你扛-50-万以上的大病风险" class="headerlink" title="② 让“医保+商业保险”替你扛 50 万以上的大病风险"></a>② 让“医保+商业保险”替你扛 50 万以上的大病风险</h4><ul>
-<li><strong>居民医保</strong>必保，别断缴；再补一份 <strong>20 年保证续保的百万医疗险</strong>（30 岁约 300 元&#x2F;年），把免赔额 1 万以上的住院费用全覆盖。  </li>
-<li>有娃家庭加 <strong>少儿门急诊险</strong>（0 免赔，微信&#x2F;支付宝 200 元&#x2F;年），可对冲幼儿园交叉感染的高频小住院。</li>
-</ul>
-<h4 id="③-用“个人养老金-税优养老险”把“社保缺口”先补一半"><a href="#③-用“个人养老金-税优养老险”把“社保缺口”先补一半" class="headerlink" title="③ 用“个人养老金+税优养老险”把“社保缺口”先补一半"></a>③ 用“个人养老金+税优养老险”把“社保缺口”先补一半</h4><ul>
-<li>个人养老金账户（36 城市试点）：每年最多 1.2 万，<strong>投资环节免税，领取时 3% 低税率</strong>；可买存款、养老基金、理财。  </li>
-<li>税优养老险（旧版）：保费 1 000 元&#x2F;月可税前抵扣，退休领年金也按 3% 税，适合 45 岁以上人群。</li>
-</ul>
-<h4 id="④-把“住房”变成未来可变现的“养老资产”"><a href="#④-把“住房”变成未来可变现的“养老资产”" class="headerlink" title="④ 把“住房”变成未来可变现的“养老资产”"></a>④ 把“住房”变成未来可变现的“养老资产”</h4><ul>
-<li>如果首套自住已满足，<strong>第二套尽量选“地铁口+小户型+好学區”</strong>，租金抵贷，20 年后可反向抵押或出售换现金。  &#x2F;&#x2F;这条不现实，现在越来越多的地方都难容下那些打工人了。</li>
-<li>公积金贷款利率比商贷低 1.5~2 个百分点，<strong>能贷满 30 年就贷满</strong>，等额本金与等额本息差距几十万，选前者。</li>
-</ul>
-<h4 id="⑤-教育成本前置规划：用“香港储蓄分红险”或“教育年金”锁定大学学费"><a href="#⑤-教育成本前置规划：用“香港储蓄分红险”或“教育年金”锁定大学学费" class="headerlink" title="⑤ 教育成本前置规划：用“香港储蓄分红险”或“教育年金”锁定大学学费"></a>⑤ 教育成本前置规划：用“香港储蓄分红险”或“教育年金”锁定大学学费</h4><ul>
-<li>0 岁起每年交 5 万港元的 5 年缴美元分红险，18 年 IRR≈4.5%，可一次性提取 20 万美元，覆盖英美本科第一年学费。  </li>
-<li>若不想出境，国内 <strong>教育年金+基金定投组合</strong>（60% 平衡型+40% 债券型），同样 18 年复合 5% 可期待。</li>
-</ul>
-<h4 id="⑥-失业-现金流安全垫：至少-6-个月现金-可快速变现的货基"><a href="#⑥-失业-现金流安全垫：至少-6-个月现金-可快速变现的货基" class="headerlink" title="⑥ 失业&#x2F;现金流安全垫：至少 6 个月现金+可快速变现的货基"></a>⑥ 失业&#x2F;现金流安全垫：至少 6 个月现金+可快速变现的货基</h4><ul>
-<li>把 6 个月家庭刚性支出（房贷+物业+伙食+保险）放在 <strong>货币基金+短债基金</strong>，T+0&#x2F;T+1 可取。  </li>
-<li>信用卡留 2 张 5 万额度以上备用金，但只当“过桥”，避免分期（实际年化 15%+）。</li>
-</ul>
-<h4 id="⑦-用“信息差”薅官方羊毛：地方消费券、个税退税、技能培训补贴"><a href="#⑦-用“信息差”薅官方羊毛：地方消费券、个税退税、技能培训补贴" class="headerlink" title="⑦ 用“信息差”薅官方羊毛：地方消费券、个税退税、技能培训补贴"></a>⑦ 用“信息差”薅官方羊毛：地方消费券、个税退税、技能培训补贴</h4><ul>
-<li>每年 3 月 1 日抢 <strong>个税退税</strong>，把“大病医疗”票据、房贷利息证明一次性上传，平均退 500~2 000 元。  </li>
-<li>人社局每年都有 <strong>免费技能培训</strong>（育婴、电商、直播、Python），考完证还给 1 000~1 500 元补贴，等于“带薪学技能”。</li>
-</ul>
-<hr>
-<h3 id="三、把“个人防御清单”变成-10-分钟可执行的表格"><a href="#三、把“个人防御清单”变成-10-分钟可执行的表格" class="headerlink" title="三、把“个人防御清单”变成 10 分钟可执行的表格"></a>三、把“个人防御清单”变成 10 分钟可执行的表格</h3><table>
-<thead>
-<tr>
-<th>场景</th>
-<th>工具&#x2F;动作</th>
-<th>成本&#x2F;条件</th>
-<th>预期收益</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>降个税</td>
-<td>7 项专项附加扣除</td>
-<td>0 元</td>
-<td>年省 1 000~3 000 元</td>
-</tr>
-<tr>
-<td>降大病支出</td>
-<td>居民医保+百万医疗</td>
-<td>300~400 元&#x2F;年</td>
-<td>封顶线以上 100% 报销</td>
-</tr>
-<tr>
-<td>降养老缺口</td>
-<td>个人养老金 1.2 万&#x2F;年</td>
-<td>1.2 万&#x2F;年</td>
-<td>退休多 1 份现金流+省税</td>
-</tr>
-<tr>
-<td>降教育通胀</td>
-<td>香港美元储蓄险</td>
-<td>5 万港元×5 年</td>
-<td>18 年约 20 万美元</td>
-</tr>
-<tr>
-<td>降失业风险</td>
-<td>6 个月现金+货基</td>
-<td>活期</td>
-<td>家庭现金流不断链</td>
-</tr>
-<tr>
-<td>薅补贴</td>
-<td>个税退税+培训券</td>
-<td>0 元</td>
-<td>年捡 1 000~3 000 元</td>
-</tr>
-</tbody></table>
-<hr>
-<h3 id="四、小结——改变不了“间接税重-福利轻”的大结构，但可以让自己“少交冤枉税、多留保命钱”"><a href="#四、小结——改变不了“间接税重-福利轻”的大结构，但可以让自己“少交冤枉税、多留保命钱”" class="headerlink" title="四、小结——改变不了“间接税重+福利轻”的大结构，但可以让自己“少交冤枉税、多留保命钱”"></a>四、小结——改变不了“间接税重+福利轻”的大结构，但可以让自己“少交冤枉税、多留保命钱”</h3><ol>
-<li><strong>把该薅的个税羊毛薅到极致</strong>（专项扣除、年终奖、个人养老金）。  </li>
-<li><strong>把国家不包的“大病、养老、教育”三大坑，用商业保险+投资账户提前填上</strong>。  </li>
-<li><strong>给自己留 6 个月现金流+再培训机会</strong>，就算失业也能撑到下一班车。</li>
-</ol>
-<blockquote>
-<p><strong>普通人最好的“自我保护”不是抱怨税高，而是让每一分钱税负都对应到一份可见的保障或收益。</strong><br>先把上表 7 步跑通，你已经跑赢 80% 同龄家庭的抗风险等级。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/26/How-to-deal-with-high-tax-burden-and-low-welfare-life-in-mainland-China-with-low-society-protection/" data-id="cmg0i4gwq0000gwd57b9pe0mo" data-title="How to deal with high tax burden and low welfare life in mainland China with low society protection" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/society/" rel="tag">society</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1331,6 +1227,10 @@
       <ul>
         
           <li>
+            <a href="/2025/10/03/data-tracker-for-aids/">data tracker for aids</a>
+          </li>
+        
+          <li>
             <a href="/2025/10/01/low-risk-to-cry-coin/">low risk to cry_coin</a>
           </li>
         
@@ -1344,10 +1244,6 @@
         
           <li>
             <a href="/2025/09/29/about-marrigge/">about marrigge</a>
-          </li>
-        
-          <li>
-            <a href="/2025/09/28/Cryptocurrency-Beginner%E2%80%98s-Tutorial/">(no title)</a>
           </li>
         
       </ul>
