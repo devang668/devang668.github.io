@@ -71,6 +71,188 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-where-is-my-python" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/13/where-is-my-python/" class="article-date">
+  <time class="dt-published" datetime="2025-09-13T02:01:42.000Z" itemprop="datePublished">2025-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/13/where-is-my-python/">where is my python</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>当然，自己的电脑上有好多个python.exe, 但是哪一个才是常被默认使用的ne？</p>
+<p>使用 cmd 命令行实现查找<br>where python<br>python -V</p>
+<p>不过这是骗你的<br>真实的干活的路径包在这里<br>C:\Users\Administrator\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311</p>
+<p>用它！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -c &quot;import sys,os,pathlib; print(sys.executable)&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>得到真实的干活的，包的位置！</p>
+<p>查看这里的包，方便后面迁移</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import subprocess, sys</span><br><span class="line"># 让 pip 自己找“用户级”site-packages</span><br><span class="line">&gt;&gt;&gt; subprocess.run([sys.executable, &#x27;-m&#x27;, &#x27;pip&#x27;, &#x27;list&#x27;, &#x27;--user&#x27;, &#x27;-v&#x27;])</span><br></pre></td></tr></table></figure>
+
+<h2 id="还有"><a href="#还有" class="headerlink" title="还有"></a>还有</h2><p>使用everything 找 python.exe</p>
+<p>打开cmd 拖动这个python.exe到黑色窗口，然后</p>
+<pre><code>&gt;&gt;&gt; import sys, platform
+&gt;&gt;&gt; print(&quot;解释器路径:&quot;, sys.executable)
+&gt;&gt;&gt; print(&quot;版本字符串:&quot;, platform.python_version())
+
+
+
+可以知道他的版本，决定是否要用。
+
+左下角放大镜 输入 环境变量 进行编辑 在系统变量里path 新建python的并且上移最顶端。
+或者 win + R  输入`rundll32 sysdm.cpl,EditEnvironmentVariables`
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/13/where-is-my-python/" data-id="cmgc0d1kp002u50d5bnnybcr4" data-title="where is my python" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-如何利用Firebase-Hosting来托管网站" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/12/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Firebase-Hosting%E6%9D%A5%E6%89%98%E7%AE%A1%E7%BD%91%E7%AB%99/" class="article-date">
+  <time class="dt-published" datetime="2025-09-12T14:52:54.000Z" itemprop="datePublished">2025-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/12/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Firebase-Hosting%E6%9D%A5%E6%89%98%E7%AE%A1%E7%BD%91%E7%AB%99/">如何利用Firebase Hosting来托管网站</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>托管网站<br>这个也可以 <a target="_blank" rel="noopener" href="https://kinsta.com/signup/wp/">https://kinsta.com/signup/wp/</a><br>这个可以   <a target="_blank" rel="noopener" href="https://vercel.com/">https://vercel.com/</a></p>
+<p>如何利用Firebase Hosting来托管网站 <a target="_blank" rel="noopener" href="https://blog.csdn.net/yikezhuixun/article/details/139288773">参考</a></p>
+<p>npm install -g firebase-tools</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/12/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Firebase-Hosting%E6%9D%A5%E6%89%98%E7%AE%A1%E7%BD%91%E7%AB%99/" data-id="cmgc0d1l9003450d59vg6ea2h" data-title="如何利用Firebase Hosting来托管网站" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-about-html-listening" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/12/about-html-listening/" class="article-date">
+  <time class="dt-published" datetime="2025-09-12T13:06:12.000Z" itemprop="datePublished">2025-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/12/about-html-listening/">about html_listening</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>我又一个本地的任务需要总是又一个命令行窗口去监督-listenning</p>
+<p>其实就是有这种办法</p>
+<p>可以用于本地base64文件道德实时更新和订阅。</p>
+<p>我的测试结果显示，在后面使用记事本更新文件，前端浏览器刷新一下就出来了。<br>txt c文件都可以直接展示但是html-中文没有显示好。<br>1- </p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">title</span> Local VPN Subscription Server</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">REM 切换到当前脚本所在的目录</span></span><br><span class="line"><span class="built_in">cd</span> /d %~dp0</span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">REM 使用Python启动一个HTTP服务器，端口号为 8080</span></span><br><span class="line"><span class="comment">REM 如果8080端口被占用，可以换成其他数字，例如 8000, 8888等</span></span><br><span class="line"><span class="built_in">echo</span> Starting local server <span class="built_in">at</span> http://<span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">8080</span></span><br><span class="line">python -m http.server <span class="number">8080</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>测试服务器</p>
+<p>双击运行你刚刚创建的 start_server.bat 文件。</p>
+<p>你会看到一个黑色的命令行窗口，显示 “Starting local server…” 或类似 “Serving HTTP on 0.0.0.0 port 8080” 的信息。不要关闭这个窗口，最小化即可。</p>
+<p>打开你的浏览器，访问 <a target="_blank" rel="noopener" href="http://127.0.0.1:8080/test_base64.txt%E3%80%82">http://127.0.0.1:8080/test_base64.txt。</a></p>
+<p>如果浏览器能够显示或下载&#x2F; 显示 你的 txt 文件的内容（那一长串Base64字符串），说明本地服务器已经成功运行！</p>
+<p>实现开机自启动（全自动化的关键）<br>为了不用每次开机都手动去双击 start_server.bat，我们需要让它随系统自动在后台启动。</p>
+<p>创建后台运行脚本（可选但推荐，可以避免开机时弹出黑框）</p>
+<p>在 D:\VPN 文件夹下，再新建一个文本文档。</p>
+<p>将其重命名为 run_background.vbs。</p>
+<p>用记事本编辑它，并粘贴以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set ws = CreateObject(&quot;Wscript.Shell&quot;)</span><br><span class="line">ws.run &quot;D:\V\start_server.bat /start&quot;, 0</span><br></pre></td></tr></table></figure>
+
+<p>注意： 请将代码中的 D:\VPN\start_server.bat 替换成你自己存放 .bat 文件的实际路径。</p>
+<p>保存文件。这个 .vbs 脚本的作用就是不弹出黑框、在后台静默运行我们的服务器脚本。</p>
+<p>设置任务计划程序</p>
+<p>按下 Win + R，输入 taskschd.msc，然后回车，打开“任务计划程序”。</p>
+<p>在右侧“操作”栏中，点击“创建基本任务”。</p>
+<p>名称：随便填写，如 V2rayN Local Server。</p>
+<p>触发器：选择 “当前用户登录时” 或 “计算机启动时”。前者更常用。</p>
+<p>操作：选择 “启动程序”。</p>
+<p>程序或脚本：点击“浏览”，找到并选择我们刚刚创建的 run_background.vbs 脚本 (如果你想看到黑框，也可以直接选择 start_server.bat)。</p>
+<p>点击“下一步”，然后点击“完成”。</p>
+<p>最终效果<br>现在，整个自动化流程已经搭建完毕：</p>
+<p>您开机或登录Windows后，任务计划程序会自动在后台无窗口地运行本地Web服务器。</p>
+<p>当您打开V2rayN时（或者V2rayN随开机自启时），它会根据设置，自动从 <a target="_blank" rel="noopener" href="http://127.0.0.1:8080/v.txt">http://127.0.0.1:8080/v.txt</a> 这个地址检查更新。</p>
+<p>由于这个地址指向的就是您本地每日更新的文件，V2总能获取到最新的节点信息。</p>
+<p>但是这并不是完美的</p>
+<ul>
+<li><p>这一个不用写文本路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 获取当前VBScript文件的完整路径</span><br><span class="line">strScriptPath = WScript.ScriptFullName</span><br><span class="line"></span><br><span class="line">&#x27; 提取路径中的目录部分（去掉文件名）</span><br><span class="line">Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)</span><br><span class="line">strScriptDir = objFSO.GetParentFolderName(strScriptPath)</span><br><span class="line"></span><br><span class="line">&#x27; 拼接同目录下的bat文件路径</span><br><span class="line">strBatPath = objFSO.BuildPath(strScriptDir, &quot;start_server.bat&quot;)</span><br><span class="line"></span><br><span class="line">&#x27; 运行bat文件（隐藏窗口）</span><br><span class="line">Set ws = CreateObject(&quot;Wscript.Shell&quot;)</span><br><span class="line">ws.Run &quot;&quot;&quot;&quot; &amp; strBatPath &amp; &quot;&quot;&quot; /start&quot;, 0  &#x27; 双引号处理路径中的空格问题</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这个还可以确认操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x27; 获取当前VBScript文件的完整路径</span><br><span class="line">strScriptPath = WScript.ScriptFullName</span><br><span class="line"></span><br><span class="line">&#x27; 提取路径中的目录部分</span><br><span class="line">Set objFSO = CreateObject(&quot;Scripting.FileSystemObject&quot;)</span><br><span class="line">strScriptDir = objFSO.GetParentFolderName(strScriptPath)</span><br><span class="line"></span><br><span class="line">&#x27; 拼接同目录下的bat文件路径（这里使用你的bat文件名1.bat）</span><br><span class="line">strBatPath = objFSO.BuildPath(strScriptDir, &quot;1.bat&quot;)</span><br><span class="line"></span><br><span class="line">&#x27; 运行bat文件（显示窗口以便查看，等待执行完成）</span><br><span class="line">Set ws = CreateObject(&quot;Wscript.Shell&quot;)</span><br><span class="line">returnCode = ws.run(&quot;D:\7zip\a.minitools\vpn\SubsCheck_Win_GUI\output\1.bat /start&quot;, 0)</span><br><span class="line"></span><br><span class="line">&#x27; 弹出提示窗口，3秒后自动关闭，让你有时间确认结果</span><br><span class="line">ws.Popup &quot;操作已完成，3秒后自动退出...&quot;, 3, &quot;提示&quot;, 0 &#x27; 0表示只有&quot;确定&quot;按钮</span><br><span class="line"></span><br><span class="line">&#x27; 自动退出脚本</span><br><span class="line">WScript.Quit returnCode</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/12/about-html-listening/" data-id="cmgc0d1hf000n50d54ddz8icw" data-title="about html_listening" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-code-of-hexo-helpper" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/12/code-of-hexo-helpper/" class="article-date">
@@ -577,230 +759,6 @@ int main()
 
 
   
-    <article id="post-health-why-we-have-cancer" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/11/health-why-we-have-cancer/" class="article-date">
-  <time class="dt-published" datetime="2025-09-11T01:13:17.000Z" itemprop="datePublished">2025-09-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/11/health-why-we-have-cancer/">health why we have cancer</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="醫院不醫透露的事，普通人為何患癌-聽完後毛骨悚然"><a href="#醫院不醫透露的事，普通人為何患癌-聽完後毛骨悚然" class="headerlink" title="醫院不醫透露的事，普通人為何患癌?聽完後毛骨悚然"></a>醫院不醫透露的事，普通人為何患癌?聽完後毛骨悚然</h1><p>没有突然的癌症，只有突然发现的。</p>
-<p>测基因-去筛查-会很有帮助。</p>
-<p>基因在时刻发生这变化。心态会改变基因和基因的表达。</p>
-<p>负熵，导致了各种各种系统的美妙。从病毒，到人体。</p>
-<blockquote>
-<p>癌症很複雜.最主要得癌症的原因是,食物污染,化學污染,細菌污染,輻射污染,精神壓力.基因和染色體出問題.難治的原因是比正常細包復製太快而且無法完全清空,只要一個癌細胞還在就會瘋狂再長,長的很快.癌症有先天的也有後天的.化療要看體質,化療是創傷性治療,沒有西醫會告訴你化療真相.而中醫水準太參差,西醫都是一個標準,病人全死在同一個標準.中醫師千奇百怪,好的中醫也要配上好的藥材,難呀….現在得癌症的人非常多,存活率也高.上一個100年科學最近步,現在100年醫學大突破.我建議還是在人的自身免疫力主力研究(T Cells), 再配合中醫的天然藥材,是很有希望的.</p>
-</blockquote>
-<p>制造单一化，过度的单一也会造成可怕的结果。<br>遗传，不止是基因的物质本身，还有后天的习得-比如身体的菌菌，甚至样貌。</p>
-<p>社会的进步，也在间接的筛选掉了带有热衷于暴力基因的个体。</p>
-<p>情感的解释，现在还是解决不了。<br>濒死的神经递质的分泌–死亡是一种程序。</p>
-<p>科学的复杂性，曾经是真的好的的，也有一天可能会被证明是不对的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/11/health-why-we-have-cancer/" data-id="cmgc0d1ie001b50d50p0ub2q3" data-title="health why we have cancer" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/culture/" rel="tag">culture</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Copy a Web site to research" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/11/Copy%20a%20Web%20site%20to%20research/" class="article-date">
-  <time class="dt-published" datetime="2025-09-10T22:45:45.000Z" itemprop="datePublished">2025-09-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/11/Copy%20a%20Web%20site%20to%20research/">Copy a Web site to research</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>目前 GitHub 上最火、<strong>“粘贴网址就能把整个网站克隆成可运行 React 项目”</strong> 的开源方案，主要集中在下面 3 个仓库，按“傻瓜程度”与“可玩性”排序，给你一份直抄清单：</p>
-<hr>
-<h3 id="1️⃣-Open-Lovable（🔥-最火）"><a href="#1️⃣-Open-Lovable（🔥-最火）" class="headerlink" title="1️⃣ Open-Lovable（🔥 最火）"></a>1️⃣ Open-Lovable（🔥 最火）</h3><ul>
-<li><strong>一句话描述</strong>：输入任意网址 → 10 秒生成 <strong>React+Tailwind</strong> 源码，本地 <code>npm run dev</code> 就能跑。  </li>
-<li><strong>核心链路</strong>：Firecrawl 抓取 → GPT-4o&#x2F;Claude&#x2F;Gemini 生成代码 → E2B 沙盒自动启动。  </li>
-<li><strong>GitHub</strong>：<a target="_blank" rel="noopener" href="https://github.com/mendableai/open-lovable">https://github.com/mendableai/open-lovable</a>  </li>
-<li><strong>亮点</strong>  <ul>
-<li>支持 <strong>全栈</strong>（前端 + 可选 Node&#x2F;Supabase 后端）。  </li>
-<li>可选模型、可改 prompt，生成完直接在浏览器里二次编辑。  </li>
-<li>MIT 协议，<strong>可商用</strong>。</li>
-</ul>
-</li>
-<li><strong>注意</strong>  <ul>
-<li>需要自备 OpenAI &#x2F; Anthropic &#x2F; Google API key（抓取+生成两次调用，<strong>一次克隆约 ¥0.3-0.8</strong>）。  </li>
-<li>国内网络需给 Firecrawl 配代理，否则抓站环节 404。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>如果你想“<strong>先跑起来再改</strong>”，这是当下最省心的方案。</p>
-</blockquote>
-<hr>
-<h3 id="2️⃣-Screenshot-to-Code（📸-截图流派）"><a href="#2️⃣-Screenshot-to-Code（📸-截图流派）" class="headerlink" title="2️⃣ Screenshot-to-Code（📸 截图流派）"></a>2️⃣ Screenshot-to-Code（📸 截图流派）</h3><ul>
-<li><strong>一句话描述</strong>：<strong>上传一张网页截图</strong> → 自动生成 HTML&#x2F;React&#x2F;Vue 代码，还能让 DALL·E 3 把缺失图片也补出来。  </li>
-<li><strong>GitHub</strong>：<a target="_blank" rel="noopener" href="https://github.com/abi/screenshot-to-code">https://github.com/abi/screenshot-to-code</a>  </li>
-<li><strong>亮点</strong>  <ul>
-<li>不需要目标站点可访问，<strong>“看图写码”</strong>，对逆向敏感站很友好。  </li>
-<li>支持 <strong>React + Tailwind &#x2F; Vue + Tailwind &#x2F; Bootstrap</strong> 多技术栈切换。</li>
-</ul>
-</li>
-<li><strong>注意</strong>  <ul>
-<li>只还原<strong>视觉层</strong>，交互逻辑、数据接口需要你自己补。  </li>
-<li>同样需要 GPT-4V API key（<strong>一张图 ≈ ¥0.15</strong>）。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>适合做“<strong>像素级临摹</strong>”或没有后端数据的静态页。</p>
-</blockquote>
-<hr>
-<h3 id="3️⃣-SiteCopy（🗂️-传统整站镜像）"><a href="#3️⃣-SiteCopy（🗂️-传统整站镜像）" class="headerlink" title="3️⃣ SiteCopy（🗂️ 传统整站镜像）"></a>3️⃣ SiteCopy（🗂️ 传统整站镜像）</h3><ul>
-<li><strong>一句话描述</strong>：经典 Python CLI，<strong>把整站 HTML&#x2F;CSS&#x2F;JS&#x2F; 图片甚至 MySQL 一起搬下来</strong>，适合“搬家”而非“改代码”。  </li>
-<li><strong>GitHub</strong>：<a target="_blank" rel="noopener" href="https://github.com/Threezh1/SiteCopy">https://github.com/Threezh1/SiteCopy</a>  </li>
-<li><strong>亮点</strong>  <ul>
-<li>递归下载 + 数据库导出 + 配置文件自动改写，<strong>一键平移服务器</strong>。  </li>
-<li>不需要 AI key，纯本地流量。</li>
-</ul>
-</li>
-<li><strong>注意</strong>  <ul>
-<li>生成的是<strong>原样静态备份</strong>，不会给你 React 组件。  </li>
-<li>仅适合 Linux &#x2F; macOS，Windows 需 WSL。</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>想“<strong>原站整搬</strong>”或做灰度备份用它最稳。</p>
-</blockquote>
-<hr>
-<h3 id="✅-30-秒选型建议"><a href="#✅-30-秒选型建议" class="headerlink" title="✅ 30 秒选型建议"></a>✅ 30 秒选型建议</h3><table>
-<thead>
-<tr>
-<th>目的</th>
-<th>直接选</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>快速拿到可改的 React 项目</strong></td>
-<td>Open-Lovable</td>
-</tr>
-<tr>
-<td><strong>只有设计稿 &#x2F; 页面已挂</strong></td>
-<td>Screenshot-to-Code</td>
-</tr>
-<tr>
-<td><strong>整站迁移、不改技术栈</strong></td>
-<td>SiteCopy</td>
-</tr>
-</tbody></table>
-<hr>
-<h3 id="🚀-本地-3-步跑起来（以-Open-Lovable-为例）"><a href="#🚀-本地-3-步跑起来（以-Open-Lovable-为例）" class="headerlink" title="🚀 本地 3 步跑起来（以 Open-Lovable 为例）"></a>🚀 本地 3 步跑起来（以 Open-Lovable 为例）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/mendableai/open-lovable.git</span><br><span class="line"><span class="built_in">cd</span> open-lovable</span><br><span class="line"><span class="built_in">cp</span> .env.example .env.local</span><br><span class="line"><span class="comment"># 填好 OPENAI_API_KEY 或 ANTHROPIC_API_KEY</span></span><br><span class="line">npm i</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-<p>浏览器打开 <code>http://localhost:5173</code>，贴目标 URL → <strong>Generate</strong>，等 10 秒就能下载完整 React 项目。</p>
-<hr>
-<p>克隆愉快，<strong>记得遵守对方版权、robots.txt 及相关法律</strong>，别把“学习副本”当成“上线盗版”。  </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/11/Copy%20a%20Web%20site%20to%20research/" data-id="cmgc0d1ga000550d5ba0q08lx" data-title="Copy a Web site to research" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-my-6th-post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/10/my-6th-post/" class="article-date">
-  <time class="dt-published" datetime="2025-09-10T01:14:19.000Z" itemprop="datePublished">2025-09-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/10/my-6th-post/">my 6th post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="在这里测试图片功能"><a href="#在这里测试图片功能" class="headerlink" title="在这里测试图片功能"></a>在这里测试图片功能</h2><p>这是一个图片</p>
-<p><img src="D:\ProgramData\git\blogs\source_posts\my-6th-post\giuseppe-famiani-npaEc3Zc-RI-unsplash.jpg" alt="giuseppe-famiani-npaEc3Zc-RI-unsplash"></p>
-<p>这是第二个</p>
-<p>从上文复制</p>
-<p><code>&lt;img src=&quot;/2025/09/10/my-6th-post/giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2.jpg&quot; alt=&quot;giuseppe-famiani-npaEc3Zc-RI-unsplash&quot; /&gt;</code></p>
-<img src="/2025/09/10/my-6th-post/giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2.jpg" alt="giuseppe-famiani-npaEc3Zc-RI-unsplash" />
-
-<p>从文件夹里复制：</p>
-<p><code>&lt;img src=&quot;/2025/09/10/my-6th-post/giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2.jpg&quot; alt=&quot;giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2&quot; /&gt;</code></p>
-<img src="/2025/09/10/my-6th-post/giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2.jpg" alt="giuseppe-famiani-npaEc3Zc-RI-unsplash-1757467531892-2" />
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/10/my-6th-post/" data-id="cmgc0d1j5001w50d5gpmofim4" data-title="my 6th post" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -851,23 +809,23 @@ int main()
       <ul>
         
           <li>
+            <a href="/2025/10/04/I-AM-IMPORTANT/">I AM IMPORTANT</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/04/about-K-line-for-Stock-player/">about K-line for Stock_player</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/04/how-to-download-Bian/">how to download Bian</a>
+          </li>
+        
+          <li>
             <a href="/2025/10/04/some-details-about-trade-apps/">some details about trade apps</a>
           </li>
         
           <li>
             <a href="/2025/10/04/the-ways-to-be-rich/">the ways to be rich</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/04/note-trade1004/">note trade1004</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/04/2025-10-04-trade-interests/">trade interests</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/03/make-money-in-Zone-Of-China/">make money in Zone Of China</a>
           </li>
         
       </ul>
