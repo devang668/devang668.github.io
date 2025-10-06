@@ -71,6 +71,135 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-background-cmd" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/21/background-cmd/" class="article-date">
+  <time class="dt-published" datetime="2025-09-21T02:11:57.000Z" itemprop="datePublished">2025-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/21/background-cmd/">background cmd</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>要隐藏或最小化CMD窗口，需要使用不同的方法，取决于你的操作系统和Python环境。以下是一些策略，从最简单到最复杂：</p>
+<p><strong>方法一：使用<code>start /min</code> (最简单，但可能无法完全隐藏)</strong></p>
+<p>这是最简单的方法，它将CMD窗口最小化到系统托盘。  但有些情况下，窗口仍然会在任务栏短暂出现。</p>
+<p>将你的批处理文件的第一行修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start /min &quot;&quot; &quot;python&quot; -m http.server 8080</span><br></pre></td></tr></table></figure>
+
+<p>这里<code>&quot;&quot;</code>  是窗口标题，留空即可。  <code>start /min</code> 命令告诉系统以最小化窗口的方式启动程序。  需要注意的是，这并不能完全隐藏窗口，只是将其最小化。</p>
+<p><strong>方法二：使用<code>start /b</code> (更彻底隐藏，但可能导致问题)</strong></p>
+<p><code>start /b</code> 命令在后台启动程序，不创建新的窗口。 然而，这可能会导致一些问题，例如：如果Python脚本出现错误，你将不会看到任何错误信息。</p>
+<p>修改你的批处理文件为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">title Local Server</span><br><span class="line">cd /d %~dp0</span><br><span class="line">python -m http.server 8080</span><br></pre></td></tr></table></figure>
+
+<p>然后，在你的CMD或PowerShell中运行这个批处理文件，而不是双击它。</p>
+<p><strong>方法三：创建服务 (最复杂，但最稳定)</strong></p>
+<p>这是最复杂但最可靠的方法。  它将你的Python服务器注册为Windows服务，这样它会在后台运行，而无需任何用户交互或可见的窗口。  这需要一些额外的步骤，而且需要对Windows服务有一定的了解。</p>
+<p>你需要使用一个工具来创建服务，例如<code>nssm</code> (Non-Sucking Service Manager)。  你需要下载<code>nssm</code>，然后使用以下命令来安装你的Python服务器为服务（替换成你的Python路径）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nssm install MyPythonServer &quot;C:\Python39\python.exe&quot; -m http.server 8080</span><br></pre></td></tr></table></figure>
+
+<p>然后，你可以使用<code>nssm start MyPythonServer</code>启动服务，<code>nssm stop MyPythonServer</code>停止服务，<code>nssm remove MyPythonServer</code>删除服务。  这需要你对Windows服务管理有所了解。</p>
+<p><strong>方法四：使用Python的子进程库 (需要修改Python代码)</strong></p>
+<p>你可以修改你的Python代码，使用<code>subprocess</code>库在后台运行HTTP服务器。  这避免了使用批处理文件，并提供了更好的控制。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"></span><br><span class="line">process = subprocess.Popen([<span class="string">&#x27;python&#x27;</span>, <span class="string">&#x27;-m&#x27;</span>, <span class="string">&#x27;http.server&#x27;</span>, <span class="string">&#x27;8080&#x27;</span>], creationflags=subprocess.CREATE_NO_WINDOW)</span><br><span class="line"></span><br><span class="line"><span class="comment"># ...你的其他代码...</span></span><br><span class="line"></span><br><span class="line">process.kill() <span class="comment"># 在需要时结束进程</span></span><br></pre></td></tr></table></figure>
+
+<p><code>subprocess.CREATE_NO_WINDOW</code> 标记会阻止创建新的CMD窗口。</p>
+<p><strong>选择哪种方法？</strong></p>
+<ul>
+<li><strong>对于简单的测试和快速启动:</strong> 方法一或二足够了。  方法一更用户友好，方法二更彻底隐藏，但风险也更高。</li>
+<li><strong>对于长期运行的服务器或生产环境:</strong>  方法三是最好的选择，因为它提供最稳定的后台运行方式。</li>
+<li><strong>如果想完全在Python中控制:</strong> 方法四是最好的选择，因为它提供了最大的灵活性和控制。</li>
+</ul>
+<p>记住，在生产环境中运行HTTP服务器，建议使用专业的Web服务器软件（如Apache或Nginx），而不是Python的<code>http.server</code>模块，因为它在安全性、性能和稳定性方面存在不足。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/21/background-cmd/" data-id="cmgf957aa0012wgd5a5gm6crn" data-title="background cmd" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-background-cmd-orders" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/20/background-cmd-orders/" class="article-date">
+  <time class="dt-published" datetime="2025-09-20T12:45:08.000Z" itemprop="datePublished">2025-09-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/20/background-cmd-orders/">background cmd orders</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>nssm是一个服务封装程序，它可以将普通exe程序封装成服务，实现开机自启动，同类型的工具还有微软自己的srvany，不过nssm更加简单易用，并且功能强大。</p>
+<p>它的特点如下：</p>
+<p>支持普通exe程序（控制台程序或者带界面的Windows程序都可以）<br>安装简单，修改方便<br>可以自动守护封装了的服务，程序挂掉了后可以自动重启<br>官网地址：<a target="_blank" rel="noopener" href="https://nssm.cc/">https://nssm.cc/</a></p>
+<h3 id="打开命令行，运行nssm程序"><a href="#打开命令行，运行nssm程序" class="headerlink" title="打开命令行，运行nssm程序"></a>打开命令行，运行nssm程序</h3><p>管理员权限打开命令行工具，切换到nssm.exe所在路径，运行 nssm install，打开程序配置界面</p>
+<h3 id="配置项说明："><a href="#配置项说明：" class="headerlink" title="配置项说明："></a>配置项说明：</h3><p>Path：运行应用程序的程序</p>
+<p>Startup directory：应用程序所在的目录</p>
+<p>Arguments：应用运行的参数</p>
+<p>Service name：生成服务的名称</p>
+<p>最后点击install service 完成windows服务安装，在windows服务列表就能看到创建的服务了。</p>
+<h2 id="开机自己启动"><a href="#开机自己启动" class="headerlink" title="开机自己启动"></a>开机自己启动</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">nssm set SubsCheckService Start SERVICE_AUTO_START</span><br><span class="line">sc config SubsCheckService start= auto</span><br><span class="line">echo 服务已设为开机自启。</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+
+
+<p>先要把nssm.exe 复制到 C:\Windows\System32</p>
+<h3 id="检验"><a href="#检验" class="headerlink" title="检验"></a>检验</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc qc SubsCheckService | findstr &quot;START_TYPE&quot;</span><br></pre></td></tr></table></figure>
+
+<img src="/2025/09/20/background-cmd-orders/image-20250920212140851.png" alt="image-20250920212140851" />
+
+<p>我的返回</p>
+<img src="/2025/09/20/background-cmd-orders/image-20250920212222167.png" alt="image-20250920212222167" />
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/20/background-cmd-orders/" data-id="cmgf957ab0015wgd58vsa53vh" data-title="background cmd orders" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-employee-seek-on-0920" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/20/employee-seek-on-0920/" class="article-date">
@@ -99,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/20/employee-seek-on-0920/" data-id="cmgc0d1i9001750d54pbhc2z0" data-title="employee seek on 0920" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/20/employee-seek-on-0920/" data-id="cmgf957ae001bwgd50v4636t5" data-title="employee seek on 0920" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -146,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/19/how-to-earn-from-googleADs/" data-id="cmgc0d1in001i50d55s3paq6b" data-title="how to earn from googleADs" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/19/how-to-earn-from-googleADs/" data-id="cmgf957am001rwgd5cveb8hdn" data-title="how to earn from googleADs" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -201,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/19/when-facing-terrible/" data-id="cmgc0d1kn002s50d5e1sz0q3k" data-title="当你面对贪婪和恐惧所做的麻痹" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/19/when-facing-terrible/" data-id="cmgf957bb003awgd55ac07gdy" data-title="当你面对贪婪和恐惧所做的麻痹" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -244,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/19/wow-I-created-a-new-one/" data-id="cmgc0d1l4003050d52kkic7yd" data-title="wow I created a new one" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/19/wow-I-created-a-new-one/" data-id="cmgf957bg003iwgd5hymv259g" data-title="wow I created a new one" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -301,7 +430,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/18/test-for-pic/" data-id="cmgc0d1k5002g50d58rg1a6pa" data-title="test for pic" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/18/test-for-pic/" data-id="cmgf957b3002twgd58tvgeuyb" data-title="test for pic" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -427,7 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/18/%E5%9F%BA%E9%87%91%E5%92%8C%E5%80%BA%E5%88%B8%E4%BB%A5%E5%8F%8A%E8%82%A1%E7%A5%A8/" data-id="cmgc0d1l7003250d5cgx61e0u" data-title="基金和债券以及股票" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/18/%E5%9F%BA%E9%87%91%E5%92%8C%E5%80%BA%E5%88%B8%E4%BB%A5%E5%8F%8A%E8%82%A1%E7%A5%A8/" data-id="cmgf957bj003kwgd5e51oh42i" data-title="基金和债券以及股票" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -467,7 +596,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/17/what-keyboard-I-choose-finally/" data-id="cmgc0d1kh002o50d5bett7v6x" data-title="what keyboard I choose finally" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/17/what-keyboard-I-choose-finally/" data-id="cmgf957b90036wgd55npdfj44" data-title="what keyboard I choose finally" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -510,116 +639,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/17/p-how-to-make-money-with-tk/" data-id="cmgc0d1ju002a50d5dh12980n" data-title="p how to make money with tk" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/17/p-how-to-make-money-with-tk/" data-id="cmgf957az002jwgd5ghc6g1fq" data-title="p how to make money with tk" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/commercial/" rel="tag">commercial</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-GitHub-limited-Capacity" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/17/GitHub-limited-Capacity/" class="article-date">
-  <time class="dt-published" datetime="2025-09-16T22:45:50.053Z" itemprop="datePublished">2025-09-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/17/GitHub-limited-Capacity/">GitHub limited Capacity</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>参考 <a target="_blank" rel="noopener" href="https://docs.github.com/zh/repositories/creating-and-managing-repositories/repository-limits">https://docs.github.com/zh/repositories/creating-and-managing-repositories/repository-limits</a></p>
-<h1 id="GitHub-仓库与文件大小限制说明"><a href="#GitHub-仓库与文件大小限制说明" class="headerlink" title="GitHub 仓库与文件大小限制说明"></a>GitHub 仓库与文件大小限制说明</h1><p>为确保平台性能与可靠性，GitHub 对仓库和文件设置了特定的大小限制。这些限制对于维护平台基础设施稳定及保障用户体验至关重要。</p>
-<h2 id="一、文件大小限制"><a href="#一、文件大小限制" class="headerlink" title="一、文件大小限制"></a>一、文件大小限制</h2><ul>
-<li><strong>超过 50 MB 的文件</strong>：当你尝试添加或更新超过 50 MB 的文件时，GitHub 会发出警告。尽管推送操作仍可成功，但建议移除此类文件，以避免引发性能问题。</li>
-<li><strong>超过 100 MB 的文件</strong>：GitHub 会阻止上传超过 100 MB 的文件。若需管理此类文件，必须使用 Git 大文件存储（Git Large File Storage，简称 Git LFS）。</li>
-<li><strong>浏览器上传限制</strong>：通过 GitHub 网页界面添加的文件，大小不能超过 25 MB。</li>
-</ul>
-<h2 id="二、仓库大小限制"><a href="#二、仓库大小限制" class="headerlink" title="二、仓库大小限制"></a>二、仓库大小限制</h2><ul>
-<li><strong>建议大小</strong>：仓库理想情况下应保持在 1 GB 以内，且强烈建议不超过 5 GB。</li>
-<li><strong>超出限制的处理</strong>：若某个仓库对 GitHub 基础设施造成显著影响，你可能会收到 GitHub 支持团队的通知，要求采取整改措施。</li>
-</ul>
-<h2 id="三、大文件管理方法"><a href="#三、大文件管理方法" class="headerlink" title="三、大文件管理方法"></a>三、大文件管理方法</h2><ol>
-<li>使用 Git LFS 跟踪大文件，避免导致仓库体积膨胀<sup>1,2</sup>。</li>
-<li>若需分发大型二进制文件，可在 GitHub 上创建“发布版本”（Releases）。每个发布版本中的单个文件最大可支持 2 GB<sup>1</sup>。</li>
-<li>避免使用 Git 存储大型 SQL 文件或备份文件。此类文件应改用文件共享服务或专门的备份工具<sup>1</sup>。</li>
-</ol>
-<h2 id="四、减小仓库体积的方法"><a href="#四、减小仓库体积的方法" class="headerlink" title="四、减小仓库体积的方法"></a>四、减小仓库体积的方法</h2><ol>
-<li>使用 <code>git rm</code> 命令删除不必要的文件，并通过修改提交（amend commits）清理提交历史<sup>1</sup>。</li>
-<li>执行 <code>git gc</code> 命令压缩 Git 对象，优化存储占用<sup>2</sup>。</li>
-<li>使用 <code>git-sizer</code> 等工具分析仓库大小，定位导致体积过大的问题区域<sup>1,2</sup>。</li>
-</ol>
-<p>遵循上述指南，你可以有效管理 GitHub 仓库，确保其性能达到最佳状态，同时符合平台的大小限制要求。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/17/GitHub-limited-Capacity/" data-id="cmgc0d1go000950d53fg9g01y" data-title="GitHub limited Capacity" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-low-cost-services-2-developers" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/17/low-cost-services-2-developers/" class="article-date">
-  <time class="dt-published" datetime="2025-09-16T22:03:29.345Z" itemprop="datePublished">2025-09-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/17/low-cost-services-2-developers/">low cost usage</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="1-想要免费的vp呢服务节点？可以使用worker-加上自己的域名"><a href="#1-想要免费的vp呢服务节点？可以使用worker-加上自己的域名" class="headerlink" title="1- 想要免费的vp呢服务节点？可以使用worker 加上自己的域名"></a>1- 想要免费的vp呢服务节点？可以使用worker 加上自己的域名</h2><h2 id="2-免费的容器哪里有，主要是docker"><a href="#2-免费的容器哪里有，主要是docker" class="headerlink" title="2-免费的容器哪里有，主要是docker"></a>2-免费的容器哪里有，主要是docker</h2><p>参考 <a target="_blank" rel="noopener" href="https://linux.do/t/topic/174075/59">https://linux.do/t/topic/174075/59</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">1、Northflank</span><br><span class="line">可以部署2个Docker容器</span><br><span class="line">不会休眠</span><br><span class="line">需要绑卡</span><br><span class="line"></span><br><span class="line">2、Patr</span><br><span class="line">可以部署1个Docker容器</span><br><span class="line">不会休眠</span><br><span class="line">资源紧张 可能分配不到容器</span><br><span class="line"></span><br><span class="line">3、 Render</span><br><span class="line">可以免费部署N个Docker容器</span><br><span class="line">所有容器启用时间 750小时/月</span><br><span class="line">会休眠</span><br><span class="line">需要绑卡</span><br><span class="line"></span><br><span class="line">4、Glitch</span><br><span class="line">可以免费部署N个Docker容器</span><br><span class="line">所有容器启用时间 1000小时/月</span><br><span class="line">会休眠</span><br><span class="line"></span><br><span class="line">5、Vercel</span><br><span class="line">适合部署静态网站</span><br><span class="line">也可以部署api</span><br><span class="line">总流量 100G/月</span><br><span class="line">不会休眠</span><br><span class="line"></span><br><span class="line">6、Back4app</span><br><span class="line">可以免费部署1个Docker容器</span><br><span class="line">容器启用时间 600小时/月</span><br><span class="line"></span><br><span class="line">以上都是自带域名，也可以使用自有域名</span><br><span class="line"></span><br><span class="line">其他的欢迎佬友补充</span><br><span class="line"></span><br><span class="line">以下是佬友补充</span><br><span class="line">1、zeabur</span><br><span class="line">适合部署静态网站和云函数</span><br><span class="line">不会休眠</span><br><span class="line"></span><br><span class="line">2、railway</span><br><span class="line">免费5美元使用额度</span><br><span class="line"></span><br><span class="line">3、koyeb</span><br><span class="line">可以免费部署一个web服务</span><br><span class="line"></span><br><span class="line">4、netlify</span><br><span class="line">适合部署静态网站和云函数</span><br><span class="line">总流量 100G/月</span><br><span class="line">不会休眠</span><br><span class="line"></span><br><span class="line">重要</span><br><span class="line">所有服务不可滥用</span><br><span class="line">诸如 搭建节点、挖矿、长时间占用CPU等</span><br><span class="line">均会被封号</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="3-开源的网站监控和数据推送服务"><a href="#3-开源的网站监控和数据推送服务" class="headerlink" title="3-开源的网站监控和数据推送服务"></a>3-开源的网站监控和数据推送服务</h2><p>WebMonitor<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1905008134990313279">https://zhuanlan.zhihu.com/p/1905008134990313279</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/wbsu2004/article/details/119748224">https://blog.csdn.net/wbsu2004/article/details/119748224</a></p>
-<h2 id="4"><a href="#4" class="headerlink" title="4-"></a>4-</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/17/low-cost-services-2-developers/" data-id="cmgc0d1it001m50d58m88dr6q" data-title="low cost usage" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
 
     </footer>
   </div>
@@ -647,7 +671,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/commercial/" rel="tag">commercial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/culture/" rel="tag">culture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/society/" rel="tag">society</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tec/" rel="tag">tec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wealth/" rel="tag">wealth</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/commercial/" rel="tag">commercial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/culture/" rel="tag">culture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/daily/" rel="tag">daily</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/project/" rel="tag">project</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/society/" rel="tag">society</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tec/" rel="tag">tec</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tec-coin/" rel="tag">tec coin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wealth/" rel="tag">wealth</a></li></ul>
     </div>
   </div>
 
@@ -657,7 +681,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/commercial/" style="font-size: 10px;">commercial</a> <a href="/tags/culture/" style="font-size: 12.5px;">culture</a> <a href="/tags/daily/" style="font-size: 10px;">daily</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/society/" style="font-size: 17.5px;">society</a> <a href="/tags/tec/" style="font-size: 20px;">tec</a> <a href="/tags/wealth/" style="font-size: 15px;">wealth</a>
+      <a href="/tags/commercial/" style="font-size: 10px;">commercial</a> <a href="/tags/culture/" style="font-size: 12.5px;">culture</a> <a href="/tags/daily/" style="font-size: 10px;">daily</a> <a href="/tags/project/" style="font-size: 10px;">project</a> <a href="/tags/society/" style="font-size: 17.5px;">society</a> <a href="/tags/tec/" style="font-size: 20px;">tec</a> <a href="/tags/tec-coin/" style="font-size: 10px;">tec coin</a> <a href="/tags/wealth/" style="font-size: 15px;">wealth</a>
     </div>
   </div>
 
@@ -679,6 +703,14 @@
       <ul>
         
           <li>
+            <a href="/2025/10/06/to-give-it-a-try/">to give it a try</a>
+          </li>
+        
+          <li>
+            <a href="/2025/10/05/to-be-happy-and-healthy/">to be happy and healthy</a>
+          </li>
+        
+          <li>
             <a href="/2025/10/05/Unleashing-Compounding-The-Silent-Force-Behind-Long-Term-Wealth/">Unleashing Compounding: The Silent Force Behind Long-Term Wealth</a>
           </li>
         
@@ -688,14 +720,6 @@
         
           <li>
             <a href="/2025/10/04/I-AM-IMPORTANT/">I AM IMPORTANT</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/04/about-K-line-for-Stock-player/">about K-line for Stock_player</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/04/how-to-download-Bian/">how to download Bian</a>
           </li>
         
       </ul>
