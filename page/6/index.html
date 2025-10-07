@@ -71,6 +71,190 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-code-of-hexo-helpper" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/09/12/code-of-hexo-helpper/" class="article-date">
+  <time class="dt-published" datetime="2025-09-12T11:28:09.000Z" itemprop="datePublished">2025-09-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/09/12/code-of-hexo-helpper/">code of hexo_helpper</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>npp：自己的记事本的位置-绝对位置；<br>targetDir：自己的hexo md文件的位置。</p>
+<p>其他，就是要满足已经可以正常hexo d推送成功过一次。<br>具备nodejs 具备hexo。</p>
+<pre><code class="cpp">
+#include &lt;windows.h&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+#include &lt;cctype&gt;
+
+#ifdef _MSC_VER
+#pragma comment(lib, &quot;shell32.lib&quot;)
+#endif
+
+bool runCmd(const std::string&amp; cmd)
+&#123;
+    STARTUPINFOA si;
+    PROCESS_INFORMATION pi;
+    ZeroMemory(&amp;si, sizeof(si));
+    si.cb = sizeof(si);
+    si.dwFlags     = STARTF_USESHOWWINDOW;
+    si.wShowWindow = SW_HIDE;
+
+    std::string full = &quot;cmd /c &quot; + cmd;
+    if (!CreateProcessA(NULL, const_cast&lt;char*&gt;(full.c_str()),
+                        NULL, NULL, FALSE, 0,
+                        NULL, NULL, &amp;si, &amp;pi))
+    &#123;
+        std::cerr &lt;&lt; &quot;CreateProcess failed: &quot; &lt;&lt; GetLastError() &lt;&lt; &quot;\n&quot;;
+        return false;
+    &#125;
+    WaitForSingleObject(pi.hProcess, INFINITE);
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
+    return true;
+&#125;
+
+void waitEnter()
+&#123;
+    std::cin.sync();
+    std::cin.clear();
+    std::cout &lt;&lt; &quot;Press ENTER to continue...&quot;;
+    std::cin.get();
+&#125;
+
+int main()
+&#123;
+    const char* targetDir = &quot;D:\\ProgramData\\git\\blogs\\source\\_posts&quot;;
+    if (!SetCurrentDirectoryA(targetDir))
+    &#123;
+        std::cerr &lt;&lt; &quot;ERROR: Cannot switch to &quot; &lt;&lt; targetDir &lt;&lt; &quot;\n&quot;;
+        return 1;
+    &#125;
+
+    while (true)
+    &#123;
+        std::cout &lt;&lt; &quot;\n=== Hexo Helper ===\n&quot;
+                     &quot;1  -&gt;  hexo g\n&quot;
+                     &quot;2  -&gt;  hexo d\n&quot;
+                     &quot;3  -&gt;  hexo g, wait 6s, hexo d\n&quot;
+                     &quot;5  -&gt;  open _posts folder\n&quot;
+                     &quot;6  -&gt;  hexo new \&quot;title\&quot; and open with Notepad++\n&quot;
+                     &quot;0  -&gt;  exit\n&quot;
+                     &quot;Choice: &quot;;
+        int choice;
+        if (!(std::cin &gt;&gt; choice)) break;
+        std::cin.sync();
+
+        switch (choice)
+        &#123;
+        case 1:
+            std::cout &lt;&lt; &quot;Running hexo g ...\n&quot;;
+            runCmd(&quot;hexo g&quot;);
+            waitEnter();
+            break;
+
+        case 2:
+            std::cout &lt;&lt; &quot;Running hexo d ...\n&quot;;
+            runCmd(&quot;hexo d&quot;);
+            waitEnter();
+            break;
+
+        case 3:
+            std::cout &lt;&lt; &quot;Running hexo g ...\n&quot;;
+            runCmd(&quot;hexo g&quot;);
+            waitEnter();
+            std::cout &lt;&lt; &quot;Waiting 6 seconds ...\n&quot;;
+            Sleep(6000);
+            std::cout &lt;&lt; &quot;Running hexo d ...\n&quot;;
+            runCmd(&quot;hexo d&quot;);
+            waitEnter();
+            break;
+
+        case 5:   // 新增：打开 _posts 目录
+            std::cout &lt;&lt; &quot;Opening _posts folder ...\n&quot;;
+            runCmd(&quot;explorer .&quot;);
+            waitEnter();
+            break;
+
+        case 6:
+        &#123;
+            std::cout &lt;&lt; &quot;Enter post title (may contain spaces): &quot;;
+            std::cin.sync();
+            std::cin.clear();
+            std::string title;
+            std::getline(std::cin, title);
+            if (title.empty())
+            &#123;
+                std::cout &lt;&lt; &quot;Empty title, cancelled.\n&quot;;
+                break;
+            &#125;
+
+            std::string cmd = &quot;hexo new \&quot;&quot; + title + &quot;\&quot;&quot;;
+            std::cout &lt;&lt; &quot;Running: &quot; &lt;&lt; cmd &lt;&lt; &quot;\n&quot;;
+            runCmd(cmd);
+
+            std::string fileName;
+            for (std::string::size_type i = 0; i &lt; title.size(); ++i)
+            &#123;
+                char c = title[i];
+                if (c == &#39; &#39;)  fileName += &#39;-&#39;;
+                else           fileName += static_cast&lt;char&gt;(std::tolower(c));
+            &#125;
+            fileName += &quot;.md&quot;;
+
+            std::string npp     = &quot;\&quot;D:\\7zip\\a.minitools\\notepadPP\\Notepad++\\notepad++.exe\&quot;&quot;;
+            std::string openCmd = npp + &quot; &quot; + fileName;
+            std::cout &lt;&lt; &quot;Opening: &quot; &lt;&lt; fileName &lt;&lt; &quot;\n&quot;;
+            runCmd(openCmd);
+            waitEnter();
+            break;
+        &#125;
+
+        case 0:
+            std::cout &lt;&lt; &quot;Bye.\n&quot;;
+            return 0;
+
+        default:
+            std::cout &lt;&lt; &quot;Invalid choice.\n&quot;;
+            break;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/09/12/code-of-hexo-helpper/" data-id="cmggpg9h500198sd5g04q9ajy" data-title="code of hexo_helpper" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-BWQ-4-hours-passed" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/09/12/BWQ-4-hours-passed/" class="article-date">
@@ -98,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/12/BWQ-4-hours-passed/" data-id="cmggmzfu20004bwd5ga7n1qb7" data-title="Oh my God, 4 hours passed" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/12/BWQ-4-hours-passed/" data-id="cmggpg9gg00048sd55zvhf737" data-title="Oh my God, 4 hours passed" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -179,7 +363,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/12/my-new-exe-information/" data-id="cmggmzfvl002bbwd5d5e74dhu" data-title="my new exe information" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/12/my-new-exe-information/" data-id="cmggpg9hp002d8sd51ffh8ubr" data-title="my new exe information" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -221,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/12/hot-website/" data-id="cmggmzfv7001obwd5dyyhhadv" data-title="hot websites" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/12/hot-website/" data-id="cmggpg9hc001q8sd5b9bqcrb3" data-title="hot websites" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -292,7 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/12/ways-to-be-rich/" data-id="cmggmzfvz0035bwd5ad355i9m" data-title="ways to be rich" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/12/ways-to-be-rich/" data-id="cmggpg9i300378sd5ggsygjfp" data-title="ways to be rich" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -334,7 +518,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/12/my-helpful-exep-born/" data-id="cmggmzfvi0027bwd5g2l51zue" data-title="my helpful exep born" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/12/my-helpful-exep-born/" data-id="cmggpg9hn00298sd5em3c26fr" data-title="my helpful exep born" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -379,7 +563,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/11/what-you-like-is-around-you-about-love/" data-id="cmggmzfw2003abwd519sq2ia3" data-title="你期待的可能就在你的身边" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/11/what-you-like-is-around-you-about-love/" data-id="cmggpg9i6003c8sd5fq6z7adg" data-title="你期待的可能就在你的身边" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -430,7 +614,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/11/health-why-we-have-cancer/" data-id="cmggmzfv4001jbwd56bcx3e5u" data-title="health why we have cancer" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/11/health-why-we-have-cancer/" data-id="cmggpg9ha001l8sd5gfc17uaw" data-title="health why we have cancer" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -553,7 +737,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/11/Copy%20a%20Web%20site%20to%20research/" data-id="cmggmzfu40005bwd579fn77s8" data-title="Copy a Web site to research" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/11/Copy%20a%20Web%20site%20to%20research/" data-id="cmggpg9gh00058sd5f0gd7p9m" data-title="Copy a Web site to research" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -603,66 +787,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/10/my-6th-post/" data-id="cmggmzfvi0025bwd5d85e04ik" data-title="my 6th post" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/09/10/my-6th-post/" data-id="cmggpg9hm00278sd564st7jja" data-title="my 6th post" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-my-5th-post" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/09/09/my-5th-post/" class="article-date">
-  <time class="dt-published" datetime="2025-09-09T01:13:17.000Z" itemprop="datePublished">2025-09-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/09/09/my-5th-post/">my 5th post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="曾shi-Qiang"><a href="#曾shi-Qiang" class="headerlink" title="曾shi Qiang"></a>曾shi Qiang</h1><blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.toutiao.com/video/7547499673343328806/">https://www.toutiao.com/video/7547499673343328806/</a><br>富不住大屋，穷不走远路。<br>一切都要平和，要和谐；他不是让你安于现状，而是积攒条件，注意内在，幸福长远。</p>
-</blockquote>
-<h1 id="曾仕强教授：“富不住大屋，穷不行远路”解读（基于视频核心观点整理）"><a href="#曾仕强教授：“富不住大屋，穷不行远路”解读（基于视频核心观点整理）" class="headerlink" title="曾仕强教授：“富不住大屋，穷不行远路”解读（基于视频核心观点整理）"></a>曾仕强教授：“富不住大屋，穷不行远路”解读（基于视频核心观点整理）</h1><p>大家好，今天和大家分享的是咱们传统国学里的一句智慧箴言——“富不住大屋，穷不行远路”。这句话听起来简单，背后却藏着对生活、对人性的深刻洞察，咱们一步步把它讲透。</p>
-<p>先看前半句，“富不住大屋”。很多人觉得，有钱了就该住大房子，住豪宅，这才是“享福”，才配得上自己的财富。但从咱们传统文化的视角来看，这其实藏着几个需要警惕的地方。</p>
-<p>第一，“大屋”往往意味着“大消耗”。不光是买房子的时候花钱多，后续的维护、打理、开销，都是一笔不小的数目。更重要的是，“大”有时候会让人“散”——心思散了，精力散了。比如原本专注于事业、专注于家庭的人，住进大屋之后，可能会把心思放在怎么装修、怎么炫耀、怎么维护面子上，反而忘了财富积累的初心，也忘了经营生活的根本。</p>
-<p>第二，“大屋”容易招“是非”。咱们老祖宗常说“树大招风”，房子太大、太显眼，很容易引起别人的嫉妒，甚至招来不必要的麻烦。你过得好，别人看在眼里，有的是羡慕，有的可能就是“红眼病”，甚至会给你设绊子、传闲话。财富需要“藏”，需要“稳”，而不是靠“大屋”去张扬。真正的富足，是内心的安定，不是外在的排场。</p>
-<p>第三，“大屋”可能让家人“离”。房子大了，空间隔得远了，家人之间的交流反而可能变少。以前住小房子，一家人挤在一块，吃饭、聊天、说说笑笑，感情很亲；住了大屋，各自待在自己的房间，少了那份“挤出来”的温情，反而容易生分。咱们追求财富，最终是为了家庭和睦，要是因为“大屋”丢了这份和睦，那就是本末倒置了。</p>
-<p>再看后半句，“穷不行远路”。有人可能会说，“穷”更要去远方闯一闯，说不定能找到机会改变命运？这话有道理，但得有个前提——“行远路”需要成本，不光是钱，还有精力、风险，穷人往往“输不起”。</p>
-<p>第一，“远路”的“经济成本”穷人扛不住。出门在外，吃、住、行哪样不要钱？穷人本身积蓄就少，一旦出门，要是找不到工作，或者遇到点意外，比如生病、丢东西，很容易陷入绝境。到时候不仅自己难，还可能连累家里人——本来家里就不宽裕，再寄钱给你应急，更是雪上加霜。咱们做事要“量力而行”，“穷”的时候，更该先把眼前的日子稳住，把能抓住的小机会做好，而不是盲目地“远走他乡”。</p>
-<p>第二，“远路”的“风险成本”穷人耗不起。出门在外，陌生的环境、不熟悉的人，到处都是不确定性。你不知道会遇到什么人，会碰到什么事，要是走了弯路、受了骗，对穷人来说，可能就是“灭顶之灾”。比如有的人穷的时候想出门打工，结果被中介骗了钱，或者进了黑工厂，不仅没赚到钱，还受了罪，回来之后更难翻身。与其冒这么大的风险“行远路”，不如先在熟悉的地方积累经验、攒点本钱，等有了基础再做打算。</p>
-<p>第三，“远路”可能让“责任”空了。穷人家里，往往更需要人扛起责任——比如照顾老人、陪伴孩子、帮衬家人。要是一味地“行远路”，把家里的担子扔给别人，就算最后赚了点钱，可能也补不回亲情的空缺，补不回对家人的亏欠。咱们传统文化里讲“孝”、讲“担当”，“穷”的时候，守住家人、守住当下的责任，比盲目追求远方的“机会”更重要。</p>
-<p>其实不管是“富不住大屋”，还是“穷不行远路”，核心就一个——“务实”，就像咱们老祖宗讲的“中庸之道”。有钱了，别被“排场”迷了眼，要守住“稳”；没钱了，别被“幻想”冲了头，要守住“实”。生活不是比谁的房子大，也不是比谁走的路远，而是比谁能把日子过得踏实、安稳，比谁能守住内心的平和与家庭的和睦。</p>
-<p>这就是老祖宗传下来的智慧，看着简单，真要做到，需要咱们多琢磨、多反思，把这些道理融进日常的生活里，才是真的懂了、真的用了。</p>
-<p>注：以上文字稿基于视频标题及曾仕强教授一贯的国学讲学风格、核心观点整理而成，若需逐字逐句的完整内容，可参考原视频（链接：<a target="_blank" rel="noopener" href="https://www.toutiao.com/video/7547499673343328806/%EF%BC%89%E7%9A%84%E5%AD%97%E5%B9%95%E5%8A%9F%E8%83%BD%EF%BC%88%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8%E5%86%85%E9%80%9A%E5%B8%B8%E5%8F%AF%E5%BC%80%E5%90%AF%E2%80%9C%E5%AD%97%E5%B9%95%E2%80%9D%E9%80%89%E9%A1%B9%EF%BC%89%EF%BC%8C%E8%8E%B7%E5%8F%96%E6%9B%B4%E7%B2%BE%E5%87%86%E7%9A%84%E5%AE%9E%E6%97%B6%E5%86%85%E5%AE%B9%E3%80%82">https://www.toutiao.com/video/7547499673343328806/）的字幕功能（视频播放器内通常可开启“字幕”选项），获取更精准的实时内容。</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/09/09/my-5th-post/" data-id="cmggmzfvg0023bwd555h487lt" data-title="my 5th post" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/culture/" rel="tag">culture</a></li></ul>
 
     </footer>
   </div>
@@ -722,6 +851,10 @@
       <ul>
         
           <li>
+            <a href="/2025/10/07/alpha-and-B-an/">alpha and B-an</a>
+          </li>
+        
+          <li>
             <a href="/2025/10/07/the-knowedge-to-crypto-ativities/">the knowedge to crypto-ativities</a>
           </li>
         
@@ -735,10 +868,6 @@
         
           <li>
             <a href="/2025/10/05/to-be-happy-and-healthy/">to be happy and healthy</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/05/Unleashing-Compounding-The-Silent-Force-Behind-Long-Term-Wealth/">Unleashing Compounding: The Silent Force Behind Long-Term Wealth</a>
           </li>
         
       </ul>
