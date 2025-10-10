@@ -71,6 +71,207 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-share-my-printer" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/10/10/share-my-printer/" class="article-date">
+  <time class="dt-published" datetime="2025-10-10T05:42:50.000Z" itemprop="datePublished">2025-10-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/10/10/share-my-printer/">share my printer</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1</p>
+<hr>
+<h3 id="【超详细】打印机共享教程"><a href="#【超详细】打印机共享教程" class="headerlink" title="【超详细】打印机共享教程"></a>【超详细】打印机共享教程</h3><h4 id="一、先搞清楚两个“角色”"><a href="#一、先搞清楚两个“角色”" class="headerlink" title="一、先搞清楚两个“角色”"></a>一、先搞清楚两个“角色”</h4><p>我们要解决的是“打印机共享”问题，这涉及两台电脑：</p>
+<ol>
+<li><strong>主机</strong>：就是<strong>直接插着打印机的那台电脑</strong>（打印机用USB线连着它）。</li>
+<li><strong>客户机</strong>：就是<strong>你想从这台电脑上也用打印机</strong>（比如你的笔记本，没插打印机，但想用那台打印机）。</li>
+</ol>
+<p>👉 主机和客户机必须在<strong>同一个Wi-Fi或同一条网线</strong>下，才能共享打印机。（用PP直连，登录同一个账号，都显示在线就是可以的）</p>
+<hr>
+<h4 id="二、主机上的设置（插着打印机的那台电脑）"><a href="#二、主机上的设置（插着打印机的那台电脑）" class="headerlink" title="二、主机上的设置（插着打印机的那台电脑）"></a>二、主机上的设置（插着打印机的那台电脑）</h4><p><strong>目标</strong>：让这台电脑“允许别人用我的打印机”。</p>
+<h5 id="步骤1：确认打印机已连接并能正常打印"><a href="#步骤1：确认打印机已连接并能正常打印" class="headerlink" title="步骤1：确认打印机已连接并能正常打印"></a>步骤1：确认打印机已连接并能正常打印</h5><ul>
+<li>先随便打印个东西，确认打印机在这台电脑上能用。</li>
+</ul>
+<h5 id="步骤2：打开“控制面板”"><a href="#步骤2：打开“控制面板”" class="headerlink" title="步骤2：打开“控制面板”"></a>步骤2：打开“控制面板”</h5><ul>
+<li>按键盘上的 <code>Win + R</code>，输入 <code>control</code>，回车。</li>
+<li>找到“设备和打印机”。</li>
+</ul>
+<img src="./share-my-printer/image-20251010141954174.png" alt="image-20251010141954174" style="zoom:67%;" />
+
+<h5 id="步骤3：找到你的打印机，右键-→-“打印机属性”"><a href="#步骤3：找到你的打印机，右键-→-“打印机属性”" class="headerlink" title="步骤3：找到你的打印机，右键 → “打印机属性”"></a>步骤3：找到你的打印机，右键 → “打印机属性”</h5><ul>
+<li>注意：不是“属性”，是<strong>“打印机属性”</strong>（上面那个）。</li>
+</ul>
+<img src="/2025/10/10/share-my-printer/image-20251010142103315.png" alt="image-20251010142103315" />
+
+
+
+<h5 id="步骤4：切换到“共享”选项卡"><a href="#步骤4：切换到“共享”选项卡" class="headerlink" title="步骤4：切换到“共享”选项卡"></a>步骤4：切换到“共享”选项卡</h5><ul>
+<li>勾选“共享这台打印机”。</li>
+<li>给打印机起个简单的名字，比如“HP_LaserJet”。</li>
+</ul>
+<h5 id="步骤5：设置共享权限（关键！）"><a href="#步骤5：设置共享权限（关键！）" class="headerlink" title="步骤5：设置共享权限（关键！）"></a>步骤5：设置共享权限（关键！）</h5><ul>
+<li>还是在“打印机属性”窗口，点“安全”选项卡。</li>
+<li>看看有没有“Everyone”这个用户：<ul>
+<li>如果没有，点“添加” → 输入 <code>Everyone</code> → 检查名称 → 确定。</li>
+<li>选中“Everyone”，把“打印”权限设为“允许”。</li>
+</ul>
+</li>
+</ul>
+<h5 id="步骤6：关闭密码保护（让连接更简单）"><a href="#步骤6：关闭密码保护（让连接更简单）" class="headerlink" title="步骤6：关闭密码保护（让连接更简单）"></a>步骤6：关闭密码保护（让连接更简单）</h5><ul>
+<li>打开“控制面板” → “网络和共享中心” → “高级共享设置”。</li>
+<li>展开“当前配置文件”（一般是“专用”）。</li>
+<li>勾选：<ul>
+<li>✅ 启用文件和打印机共享</li>
+<li>✅ 关闭密码保护共享</li>
+</ul>
+</li>
+<li>拉到最下面，找到“文件共享连接”：<ul>
+<li>选择“启用128位加密”。</li>
+</ul>
+</li>
+<li>点“保存更改”。</li>
+</ul>
+<p> <strong><code>看图片</code></strong></p>
+<img src="/2025/10/10/share-my-printer/image-20251010142625145.png" alt="image-20251010142625145" />
+
+
+
+<img src="/2025/10/10/share-my-printer/image-20251010142456132.png" alt="image-20251010142456132" />
+
+<img src="/2025/10/10/share-my-printer/image-20251010142508078.png" alt="image-20251010142508078" />
+
+
+
+<img src="/2025/10/10/share-my-printer/image-20251010142520664.png" alt="image-20251010142520664" />
+
+<p>最后确认</p>
+<img src="/2025/10/10/share-my-printer/image-20251010142725160.png" alt="image-20251010142725160" />
+
+<h5 id="步骤7：查主机的IP地址（客户机要用）"><a href="#步骤7：查主机的IP地址（客户机要用）" class="headerlink" title="步骤7：查主机的IP地址（客户机要用）"></a>步骤7：查主机的IP地址（客户机要用）</h5><ul>
+<li><p>按 <code>Win + R</code>，输入 <code>cmd</code>，回车。</p>
+</li>
+<li><p>在黑色窗口里输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找到“IPv4 地址”，一般是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.x.x</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把这个地址抄下来，比如：<code>192.168.1.5</code></p>
+</li>
+</ul>
+<p>或者从这儿，设置–网络-状态</p>
+<img src="/2025/10/10/share-my-printer/image-20251010142905398.png" alt="image-20251010142905398" />
+
+<hr>
+<h4 id="三、客户机上的设置（你想用打印机的那台电脑）"><a href="#三、客户机上的设置（你想用打印机的那台电脑）" class="headerlink" title="三、客户机上的设置（你想用打印机的那台电脑）"></a>三、客户机上的设置（你想用打印机的那台电脑）</h4><p><strong>目标</strong>：让这台电脑“找到并连接那台共享打印机”。</p>
+<h5 id="步骤1：打开“运行”窗口"><a href="#步骤1：打开“运行”窗口" class="headerlink" title="步骤1：打开“运行”窗口"></a>步骤1：打开“运行”窗口</h5><ul>
+<li>按键盘上的 <code>Win + R</code>（Win就是Windows图标键）。</li>
+</ul>
+<h5 id="步骤2：输入主机地址"><a href="#步骤2：输入主机地址" class="headerlink" title="步骤2：输入主机地址"></a>步骤2：输入主机地址</h5><ul>
+<li><p>在“运行”窗口里输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\\192.168.1.5</span><br></pre></td></tr></table></figure>
+<p>⚠️ 注意：</p>
+<ul>
+<li>是两个斜杠 <code>\\</code>，不是 <code>//</code>。</li>
+<li>斜杠方向是“从左上到右下”，就像 <code>\</code> 这样。</li>
+<li>把 <code>192.168.1.5</code> 换成你刚才抄的主机IP。</li>
+</ul>
+</li>
+<li><p>输完后按回车。</p>
+</li>
+</ul>
+<h5 id="步骤3：你应该会看到一个窗口"><a href="#步骤3：你应该会看到一个窗口" class="headerlink" title="步骤3：你应该会看到一个窗口"></a>步骤3：你应该会看到一个窗口</h5><ul>
+<li>里面会列出主机共享的东西，其中就有那台打印机（比如“HP_LaserJet”）。</li>
+<li>双击那个打印机图标。</li>
+</ul>
+<h5 id="步骤4：系统会自动安装驱动"><a href="#步骤4：系统会自动安装驱动" class="headerlink" title="步骤4：系统会自动安装驱动"></a>步骤4：系统会自动安装驱动</h5><ul>
+<li>可能会弹出一个“正在安装驱动”的窗口，等它装完。</li>
+<li>如果问“是否信任这台打印机”，点“安装”或“是”。</li>
+</ul>
+<h5 id="步骤5：设为默认打印机（可选）"><a href="#步骤5：设为默认打印机（可选）" class="headerlink" title="步骤5：设为默认打印机（可选）"></a>步骤5：设为默认打印机（可选）</h5><ul>
+<li>安装完后，打开“控制面板” → “设备和打印机”。</li>
+<li>找到刚添加的打印机，右键 → “设为默认打印机”。</li>
+</ul>
+<hr>
+<h4 id="四、测试打印"><a href="#四、测试打印" class="headerlink" title="四、测试打印"></a>四、测试打印</h4><h5 id="步骤1：找个PDF文件"><a href="#步骤1：找个PDF文件" class="headerlink" title="步骤1：找个PDF文件"></a>步骤1：找个PDF文件</h5><ul>
+<li>打开浏览器，随便找个PDF（比如百度搜“PDF测试文件”）。</li>
+<li>打开它，按 <code>Ctrl + P</code> 打印。</li>
+</ul>
+<h5 id="步骤2：选择打印机"><a href="#步骤2：选择打印机" class="headerlink" title="步骤2：选择打印机"></a>步骤2：选择打印机</h5><ul>
+<li>在打印预览里，选择你刚添加的那台共享打印机。</li>
+<li>点“打印”。</li>
+</ul>
+<h5 id="步骤3：观察结果"><a href="#步骤3：观察结果" class="headerlink" title="步骤3：观察结果"></a>步骤3：观察结果</h5><ul>
+<li>如果打印出来正常，那就OK了！</li>
+<li>如果格式不对（比如太小、太大、方向不对）：<ul>
+<li>回到打印预览界面，点“更多设置”或“首选项”。</li>
+<li>调纸张大小、方向、缩放比例等，再试一次。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="五、常见问题排查（如果连不上）"><a href="#五、常见问题排查（如果连不上）" class="headerlink" title="五、常见问题排查（如果连不上）"></a>五、常见问题排查（如果连不上）</h4><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>解决方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>客户机输入 <code>\\192.168.x.x</code> 后提示“找不到路径”</td>
+<td>检查两台电脑是不是在同一个Wi-Fi或网线；检查主机IP有没有变（重启路由器后可能会变）</td>
+</tr>
+<tr>
+<td>提示“没有权限”</td>
+<td>回到主机，确认“关闭密码保护共享”已开启；确认“Everyone”有打印权限</td>
+</tr>
+<tr>
+<td>打印机图标上有感叹号</td>
+<td>驱动没装好，去打印机官网下驱动，手动安装</td>
+</tr>
+<tr>
+<td>打印出来是空白</td>
+<td>检查是不是选了“打印到文件”或“Microsoft XPS”之类的虚拟打印机</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="六、一句话总结（给你弟弟背下来）"><a href="#六、一句话总结（给你弟弟背下来）" class="headerlink" title="六、一句话总结（给你弟弟背下来）"></a>六、一句话总结（给你弟弟背下来）</h4><blockquote>
+<p>主机开共享 → 抄IP → 客户机输入 <code>\\IP</code> → 双击打印机 → 装驱动 → 打印测试 → 搞定！</p>
+</blockquote>
+<hr>
+<p>如果你弟弟是<strong>完全电脑小白</strong>，你可以给他画个图，或者远程帮他操作一次，他就能记住了。需要我帮你画个流程图也可以说。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/10/10/share-my-printer/" data-id="cmgkgvwpt002t0wd5178u3vfo" data-title="share my printer" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-about-btc-views" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/10/09/about-btc-views/" class="article-date">
@@ -109,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/09/about-btc-views/" data-id="cmgj30ycg000se0d57fu15nen" data-title="about btc views" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/09/about-btc-views/" data-id="cmgkgvwoz000u0wd5aeedazcj" data-title="about btc views" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -156,7 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/09/about-sex/" data-id="cmgj30ycr0011e0d5ejf7atza" data-title="about sex" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/09/about-sex/" data-id="cmgkgvwp100110wd500b28tjp" data-title="about sex" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -216,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/07/alpha-and-B-an/" data-id="cmgj30ycy0015e0d5a20aesiy" data-title="alpha and B-an" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/07/alpha-and-B-an/" data-id="cmgkgvwp200130wd56tjc5sly" data-title="alpha and B-an" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -459,7 +660,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/07/the-knowedge-to-crypto-ativities/" data-id="cmgj30yfp0033e0d54aga8vyf" data-title="the knowedge to crypto-ativities" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/07/the-knowedge-to-crypto-ativities/" data-id="cmgkgvwq000350wd568mjatbx" data-title="the knowedge to crypto-ativities" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -508,7 +709,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/07/the-gate-to-crypto/" data-id="cmgj30yfi002ze0d5fqudca97" data-title="the gate to crypto" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/07/the-gate-to-crypto/" data-id="cmgkgvwpz00330wd587hwcmkw" data-title="the gate to crypto" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -568,7 +769,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/06/to-give-it-a-try/" data-id="cmgj30ygu0039e0d59w5u6oyj" data-title="to give it a try" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/06/to-give-it-a-try/" data-id="cmgkgvwq5003b0wd541k27dqx" data-title="to give it a try" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -609,7 +810,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/05/to-be-happy-and-healthy/" data-id="cmgj30ygr0037e0d5366vft76" data-title="to be happy and healthy" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/05/to-be-happy-and-healthy/" data-id="cmgkgvwq400390wd5fb6y3dv1" data-title="to be happy and healthy" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -786,7 +987,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/05/Unleashing-Compounding-The-Silent-Force-Behind-Long-Term-Wealth/" data-id="cmgj30yca000ne0d53fdd1ghr" data-title="Unleashing Compounding: The Silent Force Behind Long-Term Wealth" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/05/Unleashing-Compounding-The-Silent-Force-Behind-Long-Term-Wealth/" data-id="cmgkgvwov000n0wd55qmzdi79" data-title="Unleashing Compounding: The Silent Force Behind Long-Term Wealth" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -830,60 +1031,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/05/an-new-idea-about-AGI/" data-id="cmgj30yct0013e0d5eq0rfojl" data-title="an new idea about AGI" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2025/10/05/an-new-idea-about-AGI/" data-id="cmgkgvwp300150wd5c5okajco" data-title="an new idea about AGI" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tec/" rel="tag">tec</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-I-AM-IMPORTANT" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/10/04/I-AM-IMPORTANT/" class="article-date">
-  <time class="dt-published" datetime="2025-10-04T15:02:21.000Z" itemprop="datePublished">2025-10-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/10/04/I-AM-IMPORTANT/">I AM IMPORTANT</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="毕淑敏散文《我很重要》原文"><a href="#毕淑敏散文《我很重要》原文" class="headerlink" title="毕淑敏散文《我很重要》原文"></a>毕淑敏散文《我很重要》原文</h1><p>2018-12-29 23:11　来源：<a target="_blank" rel="noopener" href="https://www.sanwen.org.cn/">散文网</a></p>
-<p>　当我说出“我很重要”这句话的时候，颈项后面掠过一阵战栗。我知道这是把自己的额头裸露在弓箭之下了，心灵极容易被别人的批判洞伤。许多年来，没有人敢在光天化日之下表示自己“很重要”。我们从小受到的教育都是——“我不重要”。<br>　　<br>　　作为一名普通士兵，与辉煌的胜利相比，我不重要。<br>　　<br>　　作为一个单薄的个体，与浑厚的集体相比，我不重要。<br>　　<br>　　作为一位奉献型的女性，与整个家庭相比，我不重要。<br>　　<br>　　作为随处可见的人的一分子，与宝贵的物质相比，我们不重要。<br>　　<br>　　我们——简明扼要地说，就是每一个单独的“我”——到底重要还是不重要？<br>　　<br>　　我是由无数星辰日月草木山川的精华汇聚而成的。只要计算一下我们一生吃进去多少谷物，饮下了多少清水，才凝聚成一具美轮美奂的躯体，我们一定会为那数字的庞大而惊讶。平日里，我们尚要珍惜一粒米、一叶菜，难道可以对亿万粒菽粟亿万滴甘露濡养出的万物之灵，掉以丝毫的轻心吗？<br>　　<br>　　当我在博物馆里看到北京猿人窄小的额和前凸的吻时，我为人类原始时期的粗糙而黯然。他们精心打制出的石器，用今天的目光看来不过是极简单的玩具。如今很幼小的孩童，就能熟练地操纵语言，我们才意识到已经在进化之路上前进了多远。我们的头颅就是一部历史，无数祖先进步的痕迹储存于脑海深处。我们是一株亿万年苍老树干上最新萌发的绿叶，不单属于自身，更属于土地。人类的精神之火，是连绵不断的链条，作为精致的一环，我们否认了自身的重要，就是推卸了一种神圣的承诺。<br>　　<br>　　回溯我们诞生的过程，两组生命基因的嵌合，更是充满了人所不能把握的偶然性。我们每一个个体，都是机遇的产物。<br>　　<br>　　常常遥想，如果是另一个男人和另一个女人，就绝不会有今天的我……<br>　　<br>　　即使是这一个男人和这一个女人，如果换了一个时辰相爱，也不会有此刻的我……<br>　　<br>　　即使是这一个男人和这一个女人在这一个时辰，由于一片小小落叶或是清脆鸟啼的打搅，依然可能不会有如此的我……<br>　　<br>　　一种令人怅然以至走入恐惧的想象，像雾霭一般不可避免地缓缓升起，模糊了我们的来路和去处，令人不得不断然打住思绪。<br>　　<br>　　我们的生命，端坐于概率垒就的金字塔的顶端。面对大自然的鬼斧神工，我们还有权利和资格说我不重要吗？<br>　　<br>　　对于我们的父母，我们永远是不可重复的孤本。无论他们有多少儿女，我们都是独特的一个。<br>　　<br>　　假如我不存在了，他们就空留一份慈爱，在风中蛛丝般飘荡。<br>　　<br>　　假如我生了病，他们的心就会皱缩成石块，无数次向上苍祈祷我的康复，甚至愿灾痛以十倍的烈度降临于他们自身，以换取我的平安。<br>　　<br>　　我的每一滴成功，都如同经过放大镜，进入他们的瞳孔，摄入他们心底。<br>　　<br>　　假如我们先他们而去，他们的白发会从日出垂到日暮，他们的泪水会使太平洋为之涨潮。面对这无法承载的亲情，我们还敢说我不重要吗？<br>　　<br>　　我们的记忆，同自己的伴侣紧密地缠绕在一处，像两种混淆于一碟的颜色，已无法分开。你原先是黄，我原先是蓝，我们共同的颜色是绿，绿得生机勃勃，绿得苍翠欲滴。失去了妻子的男人，胸口就缺少了生死攸关的肋骨，心房裸露着，随着每一阵轻风滴血。失去了丈夫的女人，就是齐斩斩折断的琴弦，每一根都在雨夜长久地自鸣……面对相濡以沫的同道，我们忍心说我不重要吗？<br>　　<br>　　俯对我们的孩童，我们是至高至尊的惟一。我们是他们最初的宇宙，我们是深不可测的海洋。假如我们隐去，孩子就永失淳厚无双的血缘之爱，天倾东南，地陷西北，万劫不复。盘子破裂可以粘起，童年碎了，永不复原。伤口流血了，没有母亲的手为他包扎。面临抉择，没有父亲的智慧为他谋略……面对后代，我们有胆量说我不重要吗？<br>　　<br>　　与朋友相处，多年的相知，使我们仅凭一个微蹙的眉尖、一次睫毛的抖动，就可以明了对方的心情。假如我不在了，就像计算机丢失了一份不曾复制的文件，他的记忆库里留下不可填补的黑洞。夜深人静时，手指在揿了几个电话键码后，骤然停住，那一串数字再也用不着默诵了。逢年过节时，她写下一沓沓的贺卡。轮到我的地址时，她闭上眼睛……许久之后，她将一张没有地址只有姓名的贺卡填好，在无人的风口将它焚化。<br>　　<br>　　相交多年的密友，就如同沙漠中的古陶，摔碎一件就少一件，再也找不到一模一样的成品。面对这般友情，我们还好意思说我不重要吗？<br>　　<br>　　我很重要。<br>　　<br>　　我对于我的工作我的事业，是不可或缺的主宰。我的独出心裁的创意，像鸽群一般在天空翱翔，只有我才捉得住它们的羽毛。我的设想像珍珠一般散落在海滩上，等待着我把它用金线串起。我的意志向前延伸，直到地平线消失的远方……没有人能替代我，就像我不能替代别人。我很重要。<br>　　<br>　　我对自己小声说。我还不习惯嘹亮地宣布这一主张，我们在不重要中生活得太久了。我很重要。<br>　　<br>　　我重复了一遍。声音放大了一点。我听到自己的心脏在这种呼唤中猛烈地跳动。我很重要。<br>　　<br>　　我终于大声地对世界这样宣布。片刻之后，我听到山岳和江海传来回声。<br>　　<br>　　是的，我很重要。我们每一个人都应该有勇气这样说。我们的地位可能很卑微，我们的身分可能很渺小，但这丝毫不意味着我们不重要。<br>　　<br>　　重要并不是伟大的同义词，它是心灵对生命的允诺。<br>　　<br>　　人们常常从成就事业的角度，断定我们是否重要。但我要说，只要我们在时刻努力着，为光明在奋斗着，我们就是无比重要地生活着。<br>　　<br>　　让我们昂起头，对着我们这颗美丽的星球上无数的生灵，响亮地宣布——<br>　　<br>　　我很重要。</p>
-<h2 id="还有"><a href="#还有" class="headerlink" title="还有"></a>还有</h2><p>生活对于任何人都非易事，我们必须有坚韧不拔的精神。最要紧的，还是我们自己要有信心。我们必须相信，我们对每一件事情都有天赋的才能，并且，无论付出多大代价，都要把这件事情完成。当事情结束的时候，你要能问心无愧地说：“我已经尽我所能了。”</p>
-<p>有一年的春天里，我因病被迫在家里休息数周。我注视着我的女儿们所养的蚕结着茧子，这使我感兴趣。望着这些蚕执着地、勤奋地工作着，我感到我和它们非常相似。像它们一样，我总是耐心地集中在一个目标上，我之所以如此，或许是因为某种力量在鞭策着我——正如蚕被鞭策着去结它的茧子一般。</p>
-<p>近五十年来，我致力于科学的研究，而研究，是对真理的探讨。我有许多美好快乐的记忆。少女时期，我在巴黎大学，孤独地过着求学的岁月。在那整个时期中，我丈夫和我专心致志地，像在梦幻之中一般，艰辛地坐在简陋的书房里研究，后来，我们就在那儿发现了镭。</p>
-<p>我在生活中，永远是追求安静的工作和简单的家庭生活。为了实现这个理想，我竭力保持宁静的环境，以免受人事的干扰和盛名的渲染。</p>
-<p>我深信在科学方面我们有对事而不是对财富的兴趣。当<a href="https://link.zhihu.com/?target=https://www.baidu.com/s?wd=%E7%9A%AE%E5%9F%83%E5%B0%94%E5%B1%85%E9%87%8C&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao">皮埃尔居里</a>和我考虑应否在我们的发现上取得经济利益时，我们都认为不能违反我们的纯粹研究观念。因而我们没有申请镭的<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=108751661&content_type=Article&match_order=1&q=%E4%B8%93%E5%88%A9&zhida_source=entity">专利</a>，也就抛弃了一笔财富。我坚信我们是对的。诚然，人类需要寻求现实的人，他们在工作中获得很大的报酬。</p>
-<p><strong>但是，人类也需要梦想家</strong> ——他们受了事业的强烈的吸引，使他们没有闲暇，也无热情去谋求物质上的利益。我的唯一奢望，是在一个自由国家中以一个自由学者的身份从事研究工作。我从没有视这种利益为理所当然的，因为我在24岁以前，我一直居住在被占领和蹂躏的<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=108751661&content_type=Article&match_order=1&q=%E6%B3%A2%E5%85%B0&zhida_source=entity">波兰</a>。我估量过在法国得到自由的代价。</p>
-<p>我并非生来就是一个性情温和的人。我很早就知道，许多像我一样敏感的人，甚至受一言半语的呵责，便会过分懊恼，因而我尽量克制自己的敏感。从我丈夫的温和沉静的性格中，我受益匪浅。当他猝然长逝后，我便学会了逆来顺受。我年纪渐老，我愈会欣赏生活中的种种琐事，如栽花、植树、建筑，对<a href="https://link.zhihu.com/?target=https://www.baidu.com/s?wd=%E8%AF%97%E6%AD%8C%E6%9C%97%E8%AF%B5&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao">诗歌朗诵</a>和眺望星辰也有一点兴趣。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2025/10/04/I-AM-IMPORTANT/" data-id="cmgj30ybx000ee0d5b6mbarbl" data-title="I AM IMPORTANT" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/society/" rel="tag">society</a></li></ul>
 
     </footer>
   </div>
@@ -943,6 +1095,10 @@
       <ul>
         
           <li>
+            <a href="/2025/10/10/share-my-printer/">share my printer</a>
+          </li>
+        
+          <li>
             <a href="/2025/10/09/about-btc-views/">about btc views</a>
           </li>
         
@@ -956,10 +1112,6 @@
         
           <li>
             <a href="/2025/10/07/the-knowedge-to-crypto-ativities/">the knowedge to crypto-ativities</a>
-          </li>
-        
-          <li>
-            <a href="/2025/10/07/the-gate-to-crypto/">the gate to crypto</a>
           </li>
         
       </ul>
